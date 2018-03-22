@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "检测记录",
+    "usingComponents": {
+        "date-picker": "../../component/date-picker/index"
+        }
+}

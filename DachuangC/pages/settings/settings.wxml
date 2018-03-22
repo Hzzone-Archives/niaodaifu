@@ -1,0 +1,35 @@
+<!--pages/settings/settings.wxml-->
+<view>
+  <view class="info_container">
+    <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+  <view class='setting_list'>
+    <view class='setting_item'>
+      <view class='setting_item_1'>
+           <navigator>家庭成员</navigator>
+           <image src='/images/首页1.png'></image> 
+      </view>
+      <view class='setting_item_1'>
+           <navigator>我的帖子</navigator>
+           <image src='/images/首页1.png'></image> 
+      </view>
+      <view class='setting_item_1'>
+           <navigator url='/pages/order/order'>我的订单</navigator>
+           <image src='/images/首页1.png'></image> 
+      </view>
+      <view class='setting_item_1'>
+           <navigator url='/pages/address/address'>收货地址</navigator>
+           <image src='/images/首页1.png'></image> 
+      </view>
+      <view class='setting_item_1' id='exit_button' bindtap='exit'>
+            <navigator>退出登陆</navigator>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+

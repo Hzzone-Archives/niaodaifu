@@ -1,0 +1,16 @@
+<!--pages/address/address.wxml-->
+<view class='container'>
+    <view class='address_item'>
+        <view>
+            <text id="name">黄智忠</text>
+            <text id="phone">17721876903</text>
+        </view>
+        <view id="address_detail_view">
+            <text>四川省成都市双流县文星镇四川大学江安校区西南门四川省成都市双流县文星镇四川大学江安校区西南门</text>
+        <view class="caozuo">
+            <button style='background-color: red'>删除</button>
+            <button style='background-color: green'>修改</button>
+        </view>
+        </view>
+    </view>
+</view>

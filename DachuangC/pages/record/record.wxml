@@ -1,0 +1,13 @@
+<!--pages/record/record.wxml-->
+
+<view class="row">
+    <view class="label">
+        <view bindtap='select_date'>日期选择</view>
+        <view style='margin-left: 50%;' bindtap='select_all_record'>所有记录</view>
+    </view>
+    <date-picker bindonselectdate="handleSelecteDate" enableTime="{{true}}" style='display: {{date_display}};'/>
+</view>
+
+
+
+

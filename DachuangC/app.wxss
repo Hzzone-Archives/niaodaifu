@@ -1,0 +1,22 @@
+/**app.wxss**/
+
+page{
+    background-color: white;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+view {
+  display: block;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.solid_line {
+    background: black;
+    width: 100%;
+    height: 1rpx;
+}

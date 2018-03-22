@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+    <text bindtap='bubbbbb'>hhhh</text>
+    <text>hhhhh</text>
+</view>

@@ -1,0 +1,64 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/settings/settings",
+        "pages/notifications/notifications",
+        "pages/shop/shop",
+        "pages/address/address",
+        "pages/shop_detail/shop_detail",
+        "pages/cart/cart",
+        "pages/order/order",
+        "pages/product_list/product_list",
+        "pages/record/record"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "NiaoDaifuX",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#a9b7b7",
+        "selectedColor": "#1196db",
+        "borderStyle": "black",
+        "list": [
+            {
+                "selectedIconPath": "images/首页1.png",
+                "iconPath": "images/首页2.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "images/用户1.png",
+                "iconPath": "images/用户2.png",
+                "pagePath": "pages/record/record",
+                "text": "记录"
+            },
+            {
+                "selectedIconPath": "images/购物商城1.png",
+                "iconPath": "images/购物商城2.png",
+                "pagePath": "pages/shop/shop",
+                "text": "商城"
+            },
+            {
+                "selectedIconPath": "images/信息1.png",
+                "iconPath": "images/信息2.png",
+                "pagePath": "pages/notifications/notifications",
+                "text": "消息"
+            },
+            {
+                "selectedIconPath": "images/设置1.png",
+                "iconPath": "images/设置2.png",
+                "pagePath": "pages/settings/settings",
+                "text": "设置"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 20000,
+        "connectSocket": 20000,
+        "uploadFile": 20000,
+        "downloadFile": 20000
+    }
+}

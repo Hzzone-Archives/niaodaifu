@@ -1,0 +1,103 @@
+<!--pages/shop/shop.wxml-->
+<import src="/wxSearch/wxSearch.wxml"/>
+<view class="wxSearch-section">
+  <view class="wxSearch-pancel">
+    <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />
+    <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+  </view>
+</view>
+<template is="wxSearch" data="{{wxSearchData}}"/>
+<view class="container">
+    <view class="grids grids-small" style="z-index:{{z_index_value}};">
+        <navigator url='/pages/cart/cart' class='grid'>
+        <view>
+            <view class='grid_icon'>
+                <image src='/images/购物车.png' class='grid_img'></image>
+            </view>
+            <view class='grid_label'>购物车</view>
+            </view>
+        </navigator>
+        <navigator url='/pages/order/order' class='grid'>
+            <view class='grid_icon'>
+                <image src='/images/记录.png' class='grid_img'></image>
+            </view>
+            <view class='grid_label'>订单</view>
+        </navigator>
+        <navigator url='/pages/product_list/product_list?title=所有产品' class='grid'>
+            <view class='grid_icon'>
+                <image src='/images/营业厅.png' class='grid_img'></image>
+            </view>
+            <view class='grid_label'>所有产品</view>
+        </navigator>
+    </view>
+
+
+    <view style="width: 100%;height: 5rpx;background: #eee;"></view>
+
+
+    <view class='new_product_view'>
+        <text style="margin-left: 20rpx; font-size: 35rpx;">新品上架</text>
+        <view style="height: 75%;">
+        <navigator url='/pages/shop_detail/shop_detail'>
+            <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg'></image>
+            <view class="des">
+                <text class='product_name'>试纸试纸试纸试纸试纸</text>
+            </view>
+            <view class="des">
+                <text class='product_price'>¥ 180</text>
+            </view>
+        </navigator>
+        <navigator url='/pages/shop_detail/shop_detail'>
+            <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg'></image>
+            <view class="des">
+                <text class='product_name'>试纸试纸试纸试纸试纸</text>
+            </view>
+            <view class="des">
+                <text class='product_price'>¥ 180</text>
+            </view>
+        </navigator>
+        </view>
+
+    </view>
+
+    <view style="width: 100%;height: 5rpx;background: #eee;"></view>
+    
+
+        <view class='hot_product_view'>
+        <text style="margin-left: 20rpx; font-size: 35rpx;">热门商品</text>
+        <view class='product_list'>
+            <view class='product_item'>
+                <navigator url='/pages/shop_detail/shop_detail'>
+                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='product_small_image'></image>
+                    <view class="product_des">
+                        <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
+                         <text class='product_price'>¥ 200</text> 
+                    </view>
+                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='enter_button' src='/images/箭头.png'></image>
+                </navigator>
+            </view>
+            <view class='product_item'>
+                <navigator url='/pages/shop_detail/shop_detail'>
+                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='product_small_image'></image>
+                    <view class="product_des">
+                        <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
+                         <text class='product_price'>¥ 200</text> 
+                    </view>
+                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='enter_button' src='/images/箭头.png'></image>
+                </navigator>
+            </view>
+            <view class='product_item'>
+                <navigator url='/pages/shop_detail/shop_detail'>
+                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='product_small_image'></image>
+                    <view class="product_des">
+                        <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
+                         <text class='product_price'>¥ 200</text> 
+                    </view>
+                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='enter_button' src='/images/箭头.png'></image>
+                </navigator>
+            </view>
+        </view>
+
+    </view>
+</view>
+
