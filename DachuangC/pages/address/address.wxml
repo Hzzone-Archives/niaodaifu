@@ -1,16 +1,33 @@
 <!--pages/address/address.wxml-->
 <view class='container'>
+    <view class='container list'>
+    <view wx:for="{{ items }}" wx:key="" >
     <view class='address_item'>
-        <view>
-            <text id="name">黄智忠</text>
-            <text id="phone">17721876903</text>
+        <view class='user'>
+            <text class='user_name'>{{ item.user_name }}</text>
+            <text class='phone'>{{ item.phone }}</text>
         </view>
-        <view id="address_detail_view">
-            <text>四川省成都市双流县文星镇四川大学江安校区西南门四川省成都市双流县文星镇四川大学江安校区西南门</text>
-        <view class="caozuo">
-            <button style='background-color: red'>删除</button>
-            <button style='background-color: green'>修改</button>
+        <view class='detail_info'>{{ item.detail }}</view>
+        <view class='action'>
+            <view class='action_item'>
+                <image src='/images/文本编辑.png'></image>
+                <text>编辑</text>
+            </view>
+            <view class='action_item'>
+                <image src='/images/删除.png'></image>
+                <text>删除</text>
+            </view>
         </view>
         </view>
+        <view class='line'></view> 
+    </view>
+    <view class='add_address'>
+        <navigator class='add_button container' url='/pages/add_address/add_address'>
+            <view id='button1'>
+                <image src='/images/添加.png'></image>
+                <text>新建地址</text>
+            </view>
+        </navigator>
+    </view>
     </view>
 </view>

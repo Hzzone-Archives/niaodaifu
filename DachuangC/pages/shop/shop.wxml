@@ -39,7 +39,7 @@
         <text style="margin-left: 20rpx; font-size: 35rpx;">新品上架</text>
         <view style="height: 75%;">
         <navigator url='/pages/shop_detail/shop_detail'>
-            <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg'></image>
+            <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg'></image>
             <view class="des">
                 <text class='product_name'>试纸试纸试纸试纸试纸</text>
             </view>
@@ -48,7 +48,7 @@
             </view>
         </navigator>
         <navigator url='/pages/shop_detail/shop_detail'>
-            <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg'></image>
+            <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg'></image>
             <view class="des">
                 <text class='product_name'>试纸试纸试纸试纸试纸</text>
             </view>
@@ -68,7 +68,17 @@
         <view class='product_list'>
             <view class='product_item'>
                 <navigator url='/pages/shop_detail/shop_detail'>
-                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='product_small_image'></image>
+                    <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg' class='product_small_image'></image>
+                    <view class="product_des">
+                        <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
+                         <text class='product_price'>¥ 200</text> 
+                    </view>
+                    <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg' class='enter_button' src='/images/箭头.png'></image>
+                </navigator>
+            </view>
+            <view class='product_item'>
+                <navigator url='/pages/shop_detail/shop_detail'>
+                    <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg' class='product_small_image'></image>
                     <view class="product_des">
                         <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
                          <text class='product_price'>¥ 200</text> 
@@ -78,22 +88,12 @@
             </view>
             <view class='product_item'>
                 <navigator url='/pages/shop_detail/shop_detail'>
-                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='product_small_image'></image>
+                    <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg' class='product_small_image'></image>
                     <view class="product_des">
                         <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
                          <text class='product_price'>¥ 200</text> 
                     </view>
-                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='enter_button' src='/images/箭头.png'></image>
-                </navigator>
-            </view>
-            <view class='product_item'>
-                <navigator url='/pages/shop_detail/shop_detail'>
-                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='product_small_image'></image>
-                    <view class="product_des">
-                        <text class='product_name'>试纸试纸试纸试纸试纸试纸</text>
-                         <text class='product_price'>¥ 200</text> 
-                    </view>
-                    <image src='/images/55ed0775d104b851e101d6d7ef658513.jpg' class='enter_button' src='/images/箭头.png'></image>
+                    <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg' class='enter_button' src='/images/箭头.png'></image>
                 </navigator>
             </view>
         </view>

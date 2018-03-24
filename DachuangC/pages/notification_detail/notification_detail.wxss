@@ -1,0 +1,37 @@
+/* pages/notification_detail/notification_detail.wxss */
+page {
+    background-color: white;
+}
+.notification_detail {
+    margin-top:2rpx; 
+    display: flex;
+    flex-direction: column;
+}
+
+.user image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    border: 5rpx solid #eee;
+}
+.user {
+    display: flex;
+    margin: 20rpx;
+}
+
+.user view {
+    margin-left: 50rpx;
+}
+
+#user_name {
+    font-size: 40rpx; 
+}
+
+#time {
+    font-size: 30rpx; 
+}
+
+.content {
+    padding: 20rpx 20rpx 0 20rpx;
+    border-top: 2rpx solid #eee;
+}

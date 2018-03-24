@@ -1,10 +1,10 @@
 <view class="wx-view_KHAWVZ" >
     <swiper autoplay="True" class="wx-swiper_Mn3JMs"  indicator-dots="True" lower-threshold="50">
         <swiper-item class="c-full wx-swiper-item_F6vCx8" >
-            <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2"  mode="aspectFill" src="/images/530f3b41bbe01ffa3a2a6292bd7a1a6b.jpg" style="background-image: url(/images/530f3b41bbe01ffa3a2a6292bd7a1a6b.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
+            <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2"  mode="aspectFill" src="http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg" style="background-image: url(http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
         </swiper-item>
         <swiper-item class="c-full wx-swiper-item_qGeJVI" >
-            <image class="wx-image_HsAX8s2"  mode="aspectFill" src="/images/55ed0775d104b851e101d6d7ef658513.jpg" style="background-image: url(/images/55ed0775d104b851e101d6d7ef658513.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
+            <image class="wx-image_HsAX8s2"  mode="aspectFill" src="http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg" style="background-image: url(http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
         </swiper-item>
     </swiper>
     <text class="c-block wx-text_V55JEt" >日本姬弹簧草</text>
@@ -13,7 +13,7 @@
             <text class="c-block wx-text_EPMInA" >￥167.00 去购买</text>
         </view>
         <view class="wx-view_q8yXI9" >
-            <image class="wx-image_YAG40m"  mode="aspectFit" src="/images/c5656ef00d38d89eae437c5a9102f8fa_origin.png" style="background-image: url(/images/c5656ef00d38d89eae437c5a9102f8fa_origin.png); background-size: contain; background-position: center center; background-repeat: no-repeat; "/>
+            <image class="wx-image_YAG40m"  mode="aspectFit" src="/images/爱心.png" style="background-image: url(/images/爱心.png); background-size: contain; background-position: center center; background-repeat: no-repeat; "/>
         </view>
     </view>
     
@@ -27,13 +27,13 @@
     <view class='line'></view>
 
     <view class='description'>
-        <image src='/images/example/1.jpg'></image>
-        <image src='/images/example/2.jpg'></image>
-        <image src='/images/example/3.jpg'></image>
-        <image src='/images/example/4.jpg'></image>
-        <image src='/images/example/5.jpg'></image>
-        <image src='/images/example/6.jpg'></image>
-        <image src='/images/example/7.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-7.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-6.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-5.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-4.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-2.jpg'></image>
+        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg'></image>
 
     </view>
 
@@ -62,7 +62,7 @@
             </navigator>
             <navigator class="nav_userlink"  hover-class="navigator-hover">
                 <view class="likeuser fm05" >
-                    <image class="useravatar"  mode="aspectFill" src="/images/0395a843ff604331e61571375e2bb602.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(/images/0395a843ff604331e61571375e2bb602.jpg); "/>
+                    <image class="useravatar"  mode="aspectFill" src="http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg" style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-image: url(http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg"/>
                 </view>
             </navigator>
             <navigator class="nav_userlink"  hover-class="navigator-hover">

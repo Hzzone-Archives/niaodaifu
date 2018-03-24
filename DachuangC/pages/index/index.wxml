@@ -1,5 +1,65 @@
 <!--index.wxml-->
 <view class="container">
-    <text bindtap='bubbbbb'>hhhh</text>
-    <text>hhhhh</text>
+        <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <view wx:for="{{top_content}}" class="swiper_item">
+    <swiper-item>
+        <view class='top_area container' bindtap='{{item.deal_function}}'>
+            <image src='{{item.pic}}'></image>
+            <text>{{item.title}}</text>
+        </view>
+    </swiper-item>
+  </view>
+</swiper>
+</view>
+<view class='items_container'>
+        <view class='title'>检测记录</view>
+        <view class='index_items'>
+            <view class='index_item'>
+                <view class='tab_1'>
+                    <image src='/images/如期发货.png' class='index_item_icon'></image>
+                    <view class='content_item'>
+                        <text class='name'>尿常规检测11项</text>
+                        <text class='content'>共检测 {{ total_time }} 次</text>
+                    </view>
+                </view>
+                <image src='/images/箭头.png' class='enter_icon'></image>
+            </view>
+            <view class='index_item'>
+                <view class='tab_1'>
+                    <image src='/images/深度认证.png' class='index_item_icon'></image>
+                    <view class='content_item'>
+                        <text class='name'>尿常规检测11项</text>
+                        <text class='content'>共检测 {{ total_time }} 次</text>
+                    </view>
+                </view>
+                <image src='/images/箭头.png' class='enter_icon'></image>
+            </view>
+            <view class='index_item'>
+                <view class='tab_1'>
+                    <image src='/images/深度验厂.png' class='index_item_icon'></image>
+                    <view class='content_item'>
+                        <text class='name'>血液检测</text>
+                        <text class='content'>共检测 {{ total_time }} 次</text>
+                    </view>
+                </view>
+                <image src='/images/箭头.png' class='enter_icon'></image>
+            </view>
+        </view>
+</view>
+
+<view class='items_container'>
+        <view class='title'>讨论区</view>
+        <view class='index_items' wx:for="{{discussion_area_items}}" wx:key=''>
+            <navigator url='{{item.url}}' class='index_item'>
+                <view class='tab_1'>
+                    <image src='{{item.icon}}' class='index_item_icon'></image>
+                    <view class='content_item'>
+                        <text class='name'>{{item.title}}</text>
+                        <text class='content'>{{item.content}}</text>
+                    </view>
+                </view>
+                <image src='/images/箭头.png' class='enter_icon'></image>
+            </navigator>
+        </view>
 </view>

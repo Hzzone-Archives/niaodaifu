@@ -1,2 +1,25 @@
 <!--pages/notifications/notifications.wxml-->
-<text>pages/notifications/notifications.wxml</text>
+<import src="../../dist/components/refresher/refresher.wxml"/>
+
+<view class="container" style="position: absolute; height: 100%; {{ $wux.refresher.style }}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+	<template is="refresher" data="{{ ...$wux.refresher }}"/>
+	<view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">消息列表</view>
+        <view class="weui-panel__bd">
+            <navigator wx:for="{{ items }}" wx:key="" url='/pages/notification_detail/notification_detail?user_name={{item.user_name}}&time={{item.time}}&content={{item.content}}&pic={{item.pic_url}}'>
+            <view class="weui-media-box weui-media-box_text">
+                <view class='user_info'>
+                    <image src='{{item.pic_url}}'></image>
+                    <view>{{ item.user_name }}</view>
+                </view>
+                <view class='notification_info'>
+                        <view class="time">{{ item.time }}</view>                     
+                 <view class="weui-media-box__desc">{{ item.content }}</view>  
+                </view>
+                
+            </view>
+            </navigator>
+            
+        </view>
+    </view>
+</view>

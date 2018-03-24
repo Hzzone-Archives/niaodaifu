@@ -1,0 +1,14 @@
+<!--pages/notification_detail/notification_detail.wxml-->
+<view class='notification_detail'>
+    <view class='user'>
+        <image src='{{ pic }}'></image>
+        <view class='flex_view'>
+            <text id='user_name'>{{ user_name }}</text>
+            <text id='time'>{{ time }}</text>
+        </view>
+        
+    </view>
+    <view class='content'>
+        <text>{{ content }}</text>
+    </view>
+</view>

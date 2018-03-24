@@ -1,1 +1,43 @@
 /* pages/notifications/notifications.wxss */
+.weui-media-box {
+    padding: 10rpx;
+}
+
+.weui-media-box image {
+    height: 120rpx;
+    width: 120rpx;
+    padding: 10rpx;
+}
+
+.weui-media-box.weui-media-box_text {
+    display: flex;
+}
+
+.title {
+    display: row;
+}
+
+.user_info {
+    font-size: 30rpx;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.time {
+    margin: 10rpx;
+    color: black; 
+    font-size: 35rpx;
+}
+.notification_info .weui-media-box__desc{
+    margin: 10rpx;
+    height: 110rpx;
+    -webkit-line-clamp: 3;
+}
+
+.weui-panel.weui-panel_access {
+    overflow: visible;
+}
+.container {
+    display: block;
+}

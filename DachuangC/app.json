@@ -10,7 +10,9 @@
         "pages/cart/cart",
         "pages/order/order",
         "pages/product_list/product_list",
-        "pages/record/record"
+        "pages/record/record",
+        "pages/payment/payment",
+        "pages/notification_detail/notification_detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

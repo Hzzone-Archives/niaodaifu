@@ -1,1 +1,133 @@
-/* pages/order/order.wxss */
+/* pages/prompt/index.wxss */
+.page, 
+.page__bd, 
+.weui-tab__content {
+	height: 100%;
+	padding-bottom: 0;
+}
+
+.page__bd {
+    padding-bottom: 40px;
+}
+
+.weui-tab {
+  position: relative;
+  height: 100%;
+}
+
+.weui-navbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  z-index: 500;
+  top: 0;
+  width: 100%;
+  border-bottom: 1rpx solid #CCCCCC;
+}
+
+.weui-navbar__item {
+  position: relative;
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding: 13px 0;
+  text-align: center;
+  font-size: 0;
+}
+
+.weui-navbar__slider {
+  position: absolute;
+  content: " ";
+  left: 0;
+  bottom: 0;
+  width: 6em;
+  height: 3px;
+  background-color: #1AAD19;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+
+.weui-tab__panel {
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 50px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.wux-prompt__icon {
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.wux-prompt__title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin: 4rpx 0;
+}
+
+.wux-prompt__text {
+  font-size: 24rpx;
+  margin: 4rpx 0;
+}
+
+.wux-prompt__bd {
+  margin-top: 0;
+  text-align: center;
+}
+
+.wux-prompt {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  color: #939393;
+  background-color: #f2f3f4;
+}
+
+.wux-animate--fade-in {
+  -webkit-animation: fadeIn ease .3s forwards;
+          animation: fadeIn ease .3s forwards;
+}
+
+.weui-navbar__title {
+  display: inline-block;
+  font-size: 15px;
+  max-width: 8em;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.page, .page__bd, .weui-tab__content {
+height:100%;
+padding-bottom:0;
+
+}
+
+page{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	color: #333;
+    background-color: #efeff4;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    -ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+

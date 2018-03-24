@@ -1,1 +1,95 @@
 /* pages/address/address.wxss */
+
+.address_item {
+    display: flex;
+    flex-direction: column;
+    /* padding: 20rpx 0rpx 0rpx 20rpx; */
+    margin: 20rpx 0rpx 0rpx 20rpx; 
+    /* width: 100%; */
+}
+
+.action {
+    display: flex;
+}
+
+.user {
+    /* margin: 10rpx; */
+}
+
+.phone {
+    margin-left: 20rpx;
+    font-size: 35rpx;
+}
+
+.detail_info {
+    font-size: 30rpx;
+    color: #bfbfbf;
+    line-height: 100%;
+    width: 90%;
+    padding-bottom: 30rpx;
+    border-bottom:  1rpx solid #eee;
+}
+
+.action_item image {
+    width: 30rpx;
+    height: 30rpx;
+    padding: 10rpx;
+}
+
+.action_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.action_item {
+    font-size: 30rpx;
+    padding: 10rpx;
+}
+
+.action {
+    margin-left: 60%;
+}
+
+.line {
+    background-color: #eee; 
+    width: 100%;
+    height: 20rpx;
+}
+
+.user_name {
+    font-size: 40rpx;
+}
+
+.add_address {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 120rpx;
+    background-color: #eee;
+}
+.add_button {
+    margin: 10px 42px;
+    background-color: #d81e06;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#button1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 35rpx;
+}
+
+#button1 image {
+    height: 50rpx;
+    width: 50rpx;
+    padding: 10rpx;
+}
+
+.list {
+    padding-bottom: 120rpx; 
+}

@@ -1,4 +1,6 @@
 // pages/record/record.js
+import { $wuxCalendar } from '../../dist/components/wux'
+
 Page({
 
   /**
@@ -63,22 +65,25 @@ Page({
   onShareAppMessage: function () {
   
   },
-  handleSelecteDate(e) {
-      wx.showToast({ title: `${e.detail.date}`, icon: false })
-  },
-
-  select_date: function(e) {
-    //   console.log(data.date_display)
-      console.log(this.data.date_display)
-      if (this.data.date_display=='none') {
-          this.setData({ date_display: ''})
-      } else {
-          this.setData({ date_display: 'none'})
-      }
-  },
   select_all_record: function() {
       wx.showToast({
           title: '查看所有记录待开发',
       })
-  }
+  },
+  openCalendar() {
+      if (this.birthday) {
+          return this.birthday.show()
+      }
+
+      this.birthday = $wuxCalendar.init('birthday', {
+          value: ['2017-04-15'],
+          onChange(p, v, d) {
+            //   console.log(p, v, d)
+            console.log(d)
+            //   this.setData({
+            //       birthday: d.join(', ')
+            //   })
+          }
+      })
+  },
 })

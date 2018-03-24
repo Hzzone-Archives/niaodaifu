@@ -7,20 +7,21 @@ Page({
    */
     data: {
         items: [{
-            type: 'radio',
-            label: 'Updated',
-            value: 'updated',
-            children: [{
-                label: 'Recently updated',
-                value: 'desc',
+            product_image: 'http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg',
+            product_name: '试纸试纸试纸试纸试纸试纸',
+            product_price: 200,
+        },
+            {
+                product_image: 'http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg',
+                product_name: '试纸试纸试纸试纸试纸试纸',
+                product_price: 200,
             },
             {
-                label: 'Least recently updated',
-                value: 'asc',
+                product_image: 'http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg',
+                product_name: '试纸试纸试纸试纸试纸试纸',
+                product_price: 200,
             },
-            ],
-            groups: ['001'],
-        }]
+        ]
   },
 
   /**

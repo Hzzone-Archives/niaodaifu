@@ -1,13 +1,15 @@
 <!--pages/record/record.wxml-->
+<import src="../../dist/components/calendar/calendar.wxml"/>
 
-<view class="row">
+<template is="calendar" data="{{ ...$wux.calendar.birthday }}"/>
+<template is="calendar" data="{{ ...$wux.calendar.start }}"/>
+<template is="calendar" data="{{ ...$wux.calendar.end }}"/>
+ <view class="row">
     <view class="label">
-        <view bindtap='select_date'>日期选择</view>
+        <view bindtap='openCalendar'>日期选择</view>
         <view style='margin-left: 50%;' bindtap='select_all_record'>所有记录</view>
-    </view>
-    <date-picker bindonselectdate="handleSelecteDate" enableTime="{{true}}" style='display: {{date_display}};'/>
-</view>
-
+    </view> 
+ </view> 
 
 
 

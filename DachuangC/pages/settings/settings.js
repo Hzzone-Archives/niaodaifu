@@ -8,7 +8,30 @@ Page({
   data: {
     userInfo: {},
     text: "hello world",
-    hasUserInfo: false
+    hasUserInfo: false,
+
+    items: [
+        {
+            setting: '家庭成员',
+            pic: '/images/群组.png',
+            url: '/pages/address/address',
+        },
+        {
+            setting: '我的帖子',
+            pic: '/images/清单.png',
+            url: '/pages/address/address',
+        },
+        {
+            setting: '我的订单',
+            pic: '/images/钱.png',
+            url: '/pages/order/order',
+        },
+        {
+            setting: '收货地址',
+            pic: '/images/座机.png',
+            url: '/pages/address/address',
+        },
+    ]
   },
 
   /**
