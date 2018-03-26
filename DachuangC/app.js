@@ -10,6 +10,30 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          if (res.code) {
+              //发起网络请求
+            //   wx.request({
+            //       url: 'http://127.0.0.1:8080/doLogin',
+            //       data: {
+            //             code: res.code,
+            //             avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ40OxuL7aV0csyVfrgApStaaxicg9Zs0p7YalHuevLkuWfxjTibZ0SbB6LPVKJcCKDuZWVatbSxwyg/0",
+	        //             city: "Chengdu",
+            //             country: "China",
+            //             gender: 1,
+            //             language: "zh_CN",
+            //             nickName: ".",
+            //             province: "Sichuan"
+                      
+            //       },
+            //       method: 'post',
+            //       header: {
+            //           'content-type': 'application/x-www-form-urlencoded' // 默认值
+            //       },
+            //   })
+          } else {
+              console.log('登录失败！' + res.errMsg)
+          }
+          console.log(res.code)
       }
     })
     // 获取用户信息
@@ -34,6 +58,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    server_url: 'http://localhost'
   }
 })

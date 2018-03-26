@@ -1,7 +1,7 @@
 <!--pages/notifications/notifications.wxml-->
 <import src="../../dist/components/refresher/refresher.wxml"/>
 
-<view class="container" style="position: absolute; height: 100%; {{ $wux.refresher.style }}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+<view class="container" style="{{ $wux.refresher.style }}" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
 	<template is="refresher" data="{{ ...$wux.refresher }}"/>
 	<view class="weui-panel weui-panel_access">
         <view class="weui-panel__hd">消息列表</view>

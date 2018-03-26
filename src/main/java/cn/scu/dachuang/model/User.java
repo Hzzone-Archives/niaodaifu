@@ -3,40 +3,34 @@ package cn.scu.dachuang.model;
 import java.util.Date;
 
 public class User {
-    private String userId;
-
-    private String userPassword;
-
-    private String role;
+    private String openId;
 
     private String userName;
 
-    private String headImg;
+    private String sessionKey;
+
+    private String userImg;
 
     private Date birthday;
 
-    public String getUserId() {
-        return userId;
+    private String phoneNumber;
+
+    private Boolean sex;
+
+    private String city;
+
+    private String province;
+
+    private String userLanguage;
+
+    private String country;
+
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role == null ? null : role.trim();
+    public void setOpenId(String openId) {
+        this.openId = openId == null ? null : openId.trim();
     }
 
     public String getUserName() {
@@ -47,12 +41,20 @@ public class User {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public String getHeadImg() {
-        return headImg;
+    public String getSessionKey() {
+        return sessionKey;
     }
 
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg == null ? null : headImg.trim();
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey == null ? null : sessionKey.trim();
+    }
+
+    public String getUserImg() {
+        return userImg;
+    }
+
+    public void setUserImg(String userImg) {
+        this.userImg = userImg == null ? null : userImg.trim();
     }
 
     public Date getBirthday() {
@@ -61,5 +63,53 @@ public class User {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber == null ? null : phoneNumber.trim();
+    }
+
+    public Boolean getSex() {
+        return sex;
+    }
+
+    public void setSex(Boolean sex) {
+        this.sex = sex;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province == null ? null : province.trim();
+    }
+
+    public String getUserLanguage() {
+        return userLanguage;
+    }
+
+    public void setUserLanguage(String userLanguage) {
+        this.userLanguage = userLanguage == null ? null : userLanguage.trim();
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country == null ? null : country.trim();
     }
 }

@@ -2,6 +2,486 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.scu.dachuang.dao.UserMapper">
   <resultMap id="BaseResultMap" type="cn.scu.dachuang.model.User">
+    <id column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="session_key" jdbcType="VARCHAR" property="sessionKey" />
+    <result column="user_img" jdbcType="VARCHAR" property="userImg" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="user_language" jdbcType="VARCHAR" property="userLanguage" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    open_id, user_name, session_key, user_img, birthday, phone_number, sex, city, province, 
+    user_language, country
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.scu.dachuang.model.User">
+    insert into users (open_id, user_name, session_key, 
+      user_img, birthday, phone_number, 
+      sex, city, province, user_language, 
+      country)
+    values (#{openId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, 
+      #{userImg,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{userLanguage,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.scu.dachuang.model.User">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="sessionKey != null">
+        session_key,
+      </if>
+      <if test="userImg != null">
+        user_img,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="userLanguage != null">
+        user_language,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null">
+        #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="userLanguage != null">
+        #{userLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.scu.dachuang.model.User">
+    update users
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null">
+        session_key = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="userLanguage != null">
+        user_language = #{userLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.scu.dachuang.model.User">
+    update users
+    set user_name = #{userName,jdbcType=VARCHAR},
+      session_key = #{sessionKey,jdbcType=VARCHAR},
+      user_img = #{userImg,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      user_language = #{userLanguage,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR}
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.scu.dachuang.model.User">
+    <id column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="session_key" jdbcType="VARCHAR" property="sessionKey" />
+    <result column="user_img" jdbcType="VARCHAR" property="userImg" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="user_language" jdbcType="VARCHAR" property="userLanguage" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    open_id, user_name, session_key, user_img, birthday, phone_number, sex, city, province, 
+    user_language, country
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.scu.dachuang.model.User">
+    insert into users (open_id, user_name, session_key, 
+      user_img, birthday, phone_number, 
+      sex, city, province, user_language, 
+      country)
+    values (#{openId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, 
+      #{userImg,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{userLanguage,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.scu.dachuang.model.User">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="sessionKey != null">
+        session_key,
+      </if>
+      <if test="userImg != null">
+        user_img,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="userLanguage != null">
+        user_language,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null">
+        #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="userLanguage != null">
+        #{userLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.scu.dachuang.model.User">
+    update users
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null">
+        session_key = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="userLanguage != null">
+        user_language = #{userLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.scu.dachuang.model.User">
+    update users
+    set user_name = #{userName,jdbcType=VARCHAR},
+      session_key = #{sessionKey,jdbcType=VARCHAR},
+      user_img = #{userImg,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      user_language = #{userLanguage,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR}
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.scu.dachuang.model.User">
+    <id column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="session_key" jdbcType="VARCHAR" property="sessionKey" />
+    <result column="user_img" jdbcType="VARCHAR" property="userImg" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="user_language" jdbcType="VARCHAR" property="userLanguage" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    open_id, user_name, session_key, user_img, birthday, phone_number, sex, city, province, 
+    user_language, country
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from users
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.scu.dachuang.model.User">
+    insert into users (open_id, user_name, session_key, 
+      user_img, birthday, phone_number, 
+      sex, city, province, user_language, 
+      country)
+    values (#{openId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, 
+      #{userImg,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{userLanguage,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.scu.dachuang.model.User">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="sessionKey != null">
+        session_key,
+      </if>
+      <if test="userImg != null">
+        user_img,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="userLanguage != null">
+        user_language,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null">
+        #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="userLanguage != null">
+        #{userLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.scu.dachuang.model.User">
+    update users
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionKey != null">
+        session_key = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userImg != null">
+        user_img = #{userImg,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="userLanguage != null">
+        user_language = #{userLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.scu.dachuang.model.User">
+    update users
+    set user_name = #{userName,jdbcType=VARCHAR},
+      session_key = #{sessionKey,jdbcType=VARCHAR},
+      user_img = #{userImg,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      user_language = #{userLanguage,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR}
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.scu.dachuang.model.User">
     <id column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="role" jdbcType="VARCHAR" property="role" />

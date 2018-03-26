@@ -1,0 +1,71 @@
+<!--pages/post_detail/post_detail.wxml-->
+<view class='post_detail'>
+    <view class='user'>
+        <image src='{{ author.author_head_img }}'></image>
+        <view class='flex_view'>
+            <text id='user_name'>{{ author.user_name }}</text>
+            <text id='time'>{{ author.time }}</text>
+        </view>
+        
+    </view>
+    <view class='title'>
+        <text>{{ author.title }}</text>
+    </view>
+    <view class='content'>
+        <text>{{ author.content }}</text>
+    </view>
+
+    <view class='action_area'>
+            <text>{{author.comment_counts}}回复</text>
+            <view>
+                <view wx:if="{{author.isSupport}}" class='aciton_button' bindtap='post_cancel_support' bindtap='post_change_color'>              
+                    <image src='/images/赞_填充.png'></image>
+                    <text>点赞</text>
+                </view>
+                <view wx:else class='aciton_button' bindtap='post_support' bindtap='post_change_color'>
+                    <image src='/images/赞.png'></image>
+                    <text>点赞</text>
+                </view>
+                <view class='aciton_button'>
+                    <image src='/images/comments.png'></image>
+                    <text>回复</text>
+                </view>
+            </view>
+        </view>
+    
+</view>
+
+
+<!--pages/post_detail/post_detail.wxml-->
+<view class='post_detail' wx:for='{{comments}}' wx:key='{{comment_id}}'>
+    <view class='user'>
+        <image src='{{ item.head_img }}'></image>
+        <view class='flex_view'>
+            <text id='user_name'>{{ item.user_name }}</text>
+            <text id='time'>{{item.comment_index}}楼 {{ item.time }}</text>
+        </view>
+        
+    </view>
+    <view class='content'>
+        <text wx:if="{{item.to_user_id!=''}}">@{{item.to_user_name}} </text>
+        <text>{{ item.content }}</text>
+    </view>
+    <view class='action_area'>
+                <image>/images/占位.png</image>
+                <view>
+                <view wx:if="{{item.isSupport}}" class='aciton_button' bindtap='cancel_support' bindtap='change_color' data-index='{{index}}'>              
+                    <image src='/images/赞_填充.png'></image>
+                    <text>点赞</text>
+                </view>
+                <view wx:else class='aciton_button' bindtap='support' bindtap='change_color' data-index='{{index}}'>
+                    <image src='/images/赞.png'></image>
+                    <text>点赞</text>
+                </view>
+                <view class='aciton_button'>
+                    <image src='/images/comments.png'></image>
+                    <text>回复</text>
+                </view>
+                </view>
+        </view>
+    
+</view>

@@ -44,7 +44,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (!hasUserInfo){
+    } else if (!this.data.hasUserInfo){
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
@@ -107,5 +107,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  exit: function() {
+      console.log("...")
+      wx.navigateBack({
+          delta: -1
+      })
   }
 })

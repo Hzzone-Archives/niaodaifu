@@ -3,13 +3,13 @@ package cn.scu.dachuang.dao;
 import cn.scu.dachuang.model.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(String openId);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(String userId);
+    User selectByPrimaryKey(String openId);
 
     int updateByPrimaryKeySelective(User record);
 

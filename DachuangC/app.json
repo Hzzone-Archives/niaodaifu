@@ -12,7 +12,10 @@
         "pages/product_list/product_list",
         "pages/record/record",
         "pages/payment/payment",
-        "pages/notification_detail/notification_detail"
+        "pages/notification_detail/notification_detail",
+        "pages/discussion_area/discussion_area",
+        "pages/user_detail/user_detail",
+        "pages/post_detail/post_detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

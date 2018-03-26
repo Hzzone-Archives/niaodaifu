@@ -3,7 +3,7 @@ const sliderWidth = 96
 
 Page({
     data: {
-        tabs: ['全部', '待收货', '待评价'],
+        tabs: ['全部', '待收货', '已完成'],
         activeIndex: '0',
         sliderOffset: 0,
         sliderLeft: 0

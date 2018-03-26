@@ -9,18 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Date;
-
 @Service
 public class UserServiceImpl implements UserService{
-
-    private String default_head_img = "http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-16-default_head_img.jpg";
-
-    private Date default_birthday = new Date();
-
-    private String default_role = "普通用户";
 
 
     @Autowired
@@ -41,19 +31,16 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int registerUser(User user) {
-        if(null == user.getUserId())
+        if(null == user.getOpenId())
             throw new RegisterException("invalid user_id");
         User result = null;
         try{
-            result = findUserByID(user.getUserId());
+            result = findUserByID(user.getOpenId());
         }catch (LoginException e){}
         if (null != result)
             throw new RegisterException("user exists!");
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        user.setBirthday(default_birthday);
-        user.setHeadImg(default_head_img);
-        user.setRole(default_role);
         userMapper.insert(user);
         sqlSession.close();
         return 0;

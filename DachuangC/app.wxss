@@ -32,4 +32,7 @@ view {
     flex-direction: column;
 }
 
+navigator {
+    hover-class: "none";
+}
 

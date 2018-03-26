@@ -1,5 +1,5 @@
 * user
-user_name <user_id> user_img<!--  birthday phone_number sex  -->
+user_name <open_id> session_key user_img<!--  birthday phone_number sex city province language country -->
 
 * order
 user_id time <order_id>
@@ -37,4 +37,15 @@ user_id time <order_id>
 * hot_keywords
 
 <id> keywords
+
+
+{
+	avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ40OxuL7aV0csyVfrgApStaaxicg9Zs0p7YalHuevLkuWfxjTibZ0SbB6LPVKJcCKDuZWVatbSxwyg/0"
+	city: "Chengdu",
+	country: "China",
+	gender: 1,
+	language: "zh_CN",
+	nickName: ".",
+	province: "Sichuan"
+}
 

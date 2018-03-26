@@ -23,13 +23,13 @@ Page({
                 title: '病友圈',
                 content: '和处境相同的好友一起交流经验',
                 icon: '/images/account.png',
-                url: '../../pages/address/address'
+                url: '../../pages/discussion_area/discussion_area'
             },
             {
                 title: '疑难解答',
                 content: '请教专家关于你的身体状况',
                 icon: '/images/service.png',
-                url: '../../pages/address/address'
+                url: '../../pages/discussion_area/discussion_area'
             },
         ],
         indicatorDots: false,

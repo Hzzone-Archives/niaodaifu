@@ -50,8 +50,8 @@
 
 <view class='items_container'>
         <view class='title'>讨论区</view>
-        <view class='index_items' wx:for="{{discussion_area_items}}" wx:key=''>
-            <navigator url='{{item.url}}' class='index_item'>
+        <navigator class='index_items' wx:for="{{discussion_area_items}}" wx:key='' url='{{item.url}}'>
+            <view class='index_item'>
                 <view class='tab_1'>
                     <image src='{{item.icon}}' class='index_item_icon'></image>
                     <view class='content_item'>
@@ -60,6 +60,6 @@
                     </view>
                 </view>
                 <image src='/images/箭头.png' class='enter_icon'></image>
-            </navigator>
-        </view>
+            </view>
+        </navigator>
 </view>

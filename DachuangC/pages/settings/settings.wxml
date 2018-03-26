@@ -12,9 +12,9 @@
         <image src='{{ item.pic }}'></image>
     </navigator>
   </view>
-    <navigator class='setting_item' bindtap='exit'>
+    <view class='setting_item' bindtap='exit'>
             <text style='color: red;'>退出登陆</text>
-    </navigator>
+    </view>
 </view>
 
 
