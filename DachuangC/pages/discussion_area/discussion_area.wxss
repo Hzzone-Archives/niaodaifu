@@ -72,3 +72,27 @@
     width: 70rpx;
     height: 70rpx;
 }
+
+.add_post_button {
+    position: fixed;
+    bottom: 50rpx;
+    margin-left: 70%;
+    background-color: #d6204b;
+    border-radius: 10%;
+    width: 200rpx;
+}
+
+.add_post_button text {
+    font-size: 30rpx;
+}
+
+.add_post_button image {
+    height: 40rpx;
+    width: 40rpx;
+    margin: 10rpx;
+}
+.add_post_button view {
+    display: flex;
+    align-items: center;
+}
+

@@ -73,3 +73,22 @@ page {
     padding-right: 10rpx;
 }
 
+.comment_area {
+    margin: 10rpx;
+    border: 1px solid #eee;
+
+}
+
+.comment_input {
+    height: 200rpx;
+    width: 700rpx;
+    margin: 7rpx;
+    border: 1px solid #eee;
+
+}
+
+.comment_button {
+    width: 200rpx;
+    text-align: center;
+}
+

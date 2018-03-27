@@ -69,3 +69,9 @@
         </view>
     
 </view>
+
+<view class='comment_area container'>
+    <textarea class='comment_input'></textarea>
+    <view class='comment_button' bindtap='add_comment'>添加回复</view>
+     
+</view>

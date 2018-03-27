@@ -1,7 +1,7 @@
 <!--pages/discussion_area/discussion_area.wxml-->
 <import src="../../dist/components/refresher/refresher.wxml"/>
 
-<view class="container" style="position: absolute; height: 100%; {{ $wux.refresher.style }}; display: block;" bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend">
+<view class="container"  bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchend" style='margin-bottom: 200rpx;'>
     <template is="refresher" data="{{ ...$wux.refresher }}"/>
     <!-- <view class='post_item flex_view' wx:for='{{posts}}' wx:key='*this' wx:key='post_id'> -->
     <view class='post_item flex_view' wx:for='{{posts}}' wx:key='{{item.post_id}}'>
@@ -35,5 +35,12 @@
                 </view>
             </view>
         </view>
+        
     </view>
+</view>
+<view class='add_post_button'>
+    <view>
+        <image src='/images/文本编辑.png'></image>
+        <text>发布新帖</text>
+     </view>
 </view>

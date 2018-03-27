@@ -1,0 +1,40 @@
+/* pages/edit_address/edit_address.wxss */
+page {
+    background-color: #eee;
+}
+.input_area {
+    display: flex;
+    align-items: center;
+    border-bottom: 2rpx solid center;
+    margin: 2rpx 0rpx;
+    background-color: white;
+    padding: 0rpx 20rpx;
+    height: 100rpx;
+}
+
+
+.input_area input {
+    margin-left: 20rpx;
+    font-size: 35rpx;
+    maxlength: 50;
+    width: 400rpx;
+}
+
+.input_area text {
+    font-size: 35rpx;
+}
+
+.save_button {
+    position: fixed;
+    bottom: 50rpx;
+    width: 100%;
+}
+
+.save_button view {
+    background-color: #d81e06;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200rpx;
+}

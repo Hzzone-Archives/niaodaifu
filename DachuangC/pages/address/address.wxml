@@ -1,7 +1,12 @@
 <!--pages/address/address.wxml-->
+<import src="../../dist/components/dialog/dialog.wxml"/>
+
+ <template is="dialog" data="{{ ...$wux.dialog, items }}"/> 
+ <!-- <template is="dialog" data="{{ ...items }}"/>  -->
+
 <view class='container'>
     <view class='container list'>
-    <view wx:for="{{ items }}" wx:key="" >
+    <view wx:for="{{ items }}" wx:key="{{item.address_id}}" >
     <view class='address_item'>
         <view class='user'>
             <text class='user_name'>{{ item.user_name }}</text>
@@ -9,11 +14,11 @@
         </view>
         <view class='detail_info'>{{ item.detail }}</view>
         <view class='action'>
-            <view class='action_item'>
+            <navigator class='action_item' url='/pages/edit_address/edit_address?address_id={{item.address_id}}'>
                 <image src='/images/文本编辑.png'></image>
                 <text>编辑</text>
-            </view>
-            <view class='action_item'>
+            </navigator>
+            <view class='action_item' data-index='{{index}}' bindtap='delete_address'>
                 <image src='/images/删除.png'></image>
                 <text>删除</text>
             </view>
@@ -22,7 +27,7 @@
         <view class='line'></view> 
     </view>
     <view class='add_address'>
-        <navigator class='add_button container' url='/pages/add_address/add_address'>
+        <navigator class='add_button container' url='/pages/edit_address/edit_address?address_id={{item.address_id}}'>
             <view id='button1'>
                 <image src='/images/添加.png'></image>
                 <text>新建地址</text>

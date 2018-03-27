@@ -15,7 +15,8 @@
         "pages/notification_detail/notification_detail",
         "pages/discussion_area/discussion_area",
         "pages/user_detail/user_detail",
-        "pages/post_detail/post_detail"
+        "pages/post_detail/post_detail",
+        "pages/edit_address/edit_address"
     ],
     "window": {
         "backgroundTextStyle": "light",

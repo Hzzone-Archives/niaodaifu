@@ -118,4 +118,8 @@ Page({
     support: function (e) {
         console.log("增加点赞")
     },
+
+    add_comment: function (e) {
+        console.log("添加回复")
+    }
 })

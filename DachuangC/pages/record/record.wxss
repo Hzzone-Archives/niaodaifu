@@ -5,7 +5,7 @@ page {
 
 .row {
   background-color:#fff;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
 }
 
 .label {
@@ -18,4 +18,62 @@ page {
 }
 .row view {
     border-radius: 10rpx; 
+}
+ 
+.canvas {
+    width: 750rpx;
+    height: 400rpx;
+} 
+
+.record_item {
+    background-color: white;
+    margin-top: 20rpx;
+}
+
+.record_info {
+    padding: 10rpx;
+    margin-left: 10rpx;
+    display: flex;
+    align-items: center;
+}
+
+.record_info text {
+    font-size: 30rpx;
+}
+
+.record_time {
+    color: #707070;
+    padding-left: 20rpx;
+}
+
+.table {
+    display: flex;
+    width: 80%;
+    padding: 10rpx;
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    width: 40%;
+    text-align: center;
+
+}
+
+.td {
+    border: 2rpx solid #707070;
+}
+
+.th {
+    border: 2rpx solid #707070;
+    background: #1195db;
+
+}
+
+.record_item_1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    margin-bottom: 5rpx;
 }

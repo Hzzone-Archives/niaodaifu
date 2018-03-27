@@ -9,7 +9,43 @@
         <view bindtap='openCalendar'>日期选择</view>
         <view style='margin-left: 50%;' bindtap='select_all_record'>所有记录</view>
     </view> 
- </view> 
+</view>
+
+<view wx:if='{{post_item_display}}'>
+    <button bindtap='test'>hhhh</button>
+    <view class='record_item flex_view' wx:for='{{records}}' wx:key='{{records_id}}'>
+        <view class='record_info'>
+            <text class='record_type'>{{item.record_type}}</text>
+            <text class='record_time'>{{item.time}}</text>
+        </view>
+        <view class='container'>
+            <canvas canvas-id="columnCanvas-{{index}}" class="canvas" bindtouchstart="touchHandler"></canvas>
+            <view class='table'>
+                <view class='column'>
+                    <view class='th'>成分</view>
+                    <view class='td' wx:for='{{item.categories}}' wx:for-item='category'>{{category}}</view>
+                </view>
+                <view class='column'>
+                    <view class='th'>含量</view>
+                    <view class='td' wx:for='{{item.data}}'  wx:for-item='each_data'>{{each_data}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view wx:if='{{!post_item_display}}'>
+    <view class='all_records flex_view'>
+        <view class='record_item_1' wx:for='{{records}}'>
+            <view class='flex_view' style='padding: 10rpx;'>
+                <view>{{item.record_type}}</view>
+                <view>{{item.time}}</view>
+            </view>
+            <view wx:if='{{item.isNormal}}' style='color: blue; padding: 10rpx;'>正常</view>
+            <view wx:else style='color: red; padding: 10rpx;'>异常!</view>
+        </view>
+    </view>
+</view>
 
 
 

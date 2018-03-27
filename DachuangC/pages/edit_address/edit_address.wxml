@@ -1,0 +1,32 @@
+<!--pages/edit_address/edit_address.wxml-->
+<import src="../../dist/components/picker-city/picker-city.wxml"/>
+<import src="../../dist/components/dialog/dialog.wxml"/>
+
+<template is="picker-city" data="{{ ...$wux.pickerCity.city }}"/>
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
+<view class='flex_view'>
+    <view class='input_area'>
+        <text>收货人:</text>
+        <input value='{{user_name}}' focus='{{true}}' type='text' confirm-type='done'></input>
+    </view>
+    <view class='input_area'>
+        <text>联系方式:</text>
+        <input value='{{phone_number}}' focus='{{true}}'></input>
+    </view>
+    <view class='input_area'>
+        <text>所在地区:</text>
+        <input value='{{province}} {{city}} {{area}}' focus='{{true}}' disabled='{{true}}' bindtap='onTapCity'></input>
+    </view>
+    <view class='input_area'>
+        <text>详细地址:</text>
+        <input value='{{address_detail}}' focus='{{true}}'></input>
+    </view>
+    
+</view>
+
+<view class='save_button container' bindtap='save_address'>
+    <view>
+        保存
+    </view>
+</view>
