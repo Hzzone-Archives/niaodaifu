@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.Product_intro_imagesMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Product_intro_images">
+    <id column="product_id" jdbcType="VARCHAR" property="productId" />
+    <id column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, url
+  </sql>
+  <select id="selectAllProductIntroImages" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product_intro_images
+    WHERE product_id = #{productId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Product_intro_images">
+    delete from product_intro_images
+    where product_id = #{productId,jdbcType=VARCHAR}
+      and url = #{url,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Product_intro_images">
+    insert into product_intro_images (product_id, url)
+    values (#{productId,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Product_intro_images">
+    insert into product_intro_images
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

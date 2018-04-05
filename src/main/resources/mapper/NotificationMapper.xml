@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.NotificationMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Notification">
+    <id column="notification_id" jdbcType="VARCHAR" property="notificationId" />
+    <result column="from_openid" jdbcType="VARCHAR" property="fromOpenid" />
+    <result column="to_openid" jdbcType="VARCHAR" property="toOpenid" />
+    <result column="post_content" jdbcType="VARCHAR" property="postContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    notification_id, from_openid, to_openid, post_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from notification
+    where notification_id = #{notificationId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from notification
+    where notification_id = #{notificationId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Notification">
+    insert into notification (notification_id, from_openid, to_openid, 
+      post_content)
+    values (#{notificationId,jdbcType=VARCHAR}, #{fromOpenid,jdbcType=VARCHAR}, #{toOpenid,jdbcType=VARCHAR}, 
+      #{postContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Notification">
+    insert into notification
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="notificationId != null">
+        notification_id,
+      </if>
+      <if test="fromOpenid != null">
+        from_openid,
+      </if>
+      <if test="toOpenid != null">
+        to_openid,
+      </if>
+      <if test="postContent != null">
+        post_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="notificationId != null">
+        #{notificationId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromOpenid != null">
+        #{fromOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="toOpenid != null">
+        #{toOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="postContent != null">
+        #{postContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hzzone.dachuang.model.Notification">
+    update notification
+    <set>
+      <if test="fromOpenid != null">
+        from_openid = #{fromOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="toOpenid != null">
+        to_openid = #{toOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="postContent != null">
+        post_content = #{postContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where notification_id = #{notificationId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Notification">
+    update notification
+    set from_openid = #{fromOpenid,jdbcType=VARCHAR},
+      to_openid = #{toOpenid,jdbcType=VARCHAR},
+      post_content = #{postContent,jdbcType=VARCHAR}
+    where notification_id = #{notificationId,jdbcType=VARCHAR}
+  </update>
+</mapper>

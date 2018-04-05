@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.Order_itemMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Order_item">
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="counts" jdbcType="INTEGER" property="counts" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Order_item">
+    insert into order_item (order_id, product_id, price, 
+      counts)
+    values (#{orderId,jdbcType=VARCHAR}, #{productId,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{counts,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Order_item">
+    insert into order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="counts != null">
+        counts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="counts != null">
+        #{counts,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

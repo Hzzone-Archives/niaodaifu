@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.CommentMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Comment">
+    <id column="comment_id" jdbcType="VARCHAR" property="commentId" />
+    <result column="post_id" jdbcType="VARCHAR" property="postId" />
+    <result column="from_openid" jdbcType="VARCHAR" property="fromOpenid" />
+    <result column="to_openid" jdbcType="VARCHAR" property="toOpenid" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="comment_time" jdbcType="VARCHAR" property="commentTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    comment_id, post_id, from_openid, to_openid, comment_content, comment_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from comment
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Comment">
+    insert into comment (comment_id, post_id, from_openid, 
+      to_openid, comment_content, comment_time
+      )
+    values (#{commentId,jdbcType=VARCHAR}, #{postId,jdbcType=VARCHAR}, #{fromOpenid,jdbcType=VARCHAR}, 
+      #{toOpenid,jdbcType=VARCHAR}, #{commentContent,jdbcType=VARCHAR}, #{commentTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="postId != null">
+        post_id,
+      </if>
+      <if test="fromOpenid != null">
+        from_openid,
+      </if>
+      <if test="toOpenid != null">
+        to_openid,
+      </if>
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+      <if test="commentTime != null">
+        comment_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null">
+        #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromOpenid != null">
+        #{fromOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="toOpenid != null">
+        #{toOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hzzone.dachuang.model.Comment">
+    update comment
+    <set>
+      <if test="postId != null">
+        post_id = #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromOpenid != null">
+        from_openid = #{fromOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="toOpenid != null">
+        to_openid = #{toOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="commentContent != null">
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        comment_time = #{commentTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Comment">
+    update comment
+    set post_id = #{postId,jdbcType=VARCHAR},
+      from_openid = #{fromOpenid,jdbcType=VARCHAR},
+      to_openid = #{toOpenid,jdbcType=VARCHAR},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=VARCHAR}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
+  </update>
+</mapper>

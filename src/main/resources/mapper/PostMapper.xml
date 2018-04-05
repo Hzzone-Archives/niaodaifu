@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.PostMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Post">
+    <id column="post_id" jdbcType="VARCHAR" property="postId" />
+    <result column="post_time" jdbcType="TIMESTAMP" property="postTime" />
+    <result column="post_content" jdbcType="VARCHAR" property="postContent" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    post_id, post_time, post_content, title, open_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from post
+    where post_id = #{postId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from post
+    where post_id = #{postId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Post">
+    insert into post (post_id, post_time, post_content, 
+      title, open_id)
+    values (#{postId,jdbcType=VARCHAR}, #{postTime,jdbcType=TIMESTAMP}, #{postContent,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Post">
+    insert into post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="postId != null">
+        post_id,
+      </if>
+      <if test="postTime != null">
+        post_time,
+      </if>
+      <if test="postContent != null">
+        post_content,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="postId != null">
+        #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="postTime != null">
+        #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postContent != null">
+        #{postContent,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hzzone.dachuang.model.Post">
+    update post
+    <set>
+      <if test="postTime != null">
+        post_time = #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postContent != null">
+        post_content = #{postContent,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where post_id = #{postId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Post">
+    update post
+    set post_time = #{postTime,jdbcType=TIMESTAMP},
+      post_content = #{postContent,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR}
+    where post_id = #{postId,jdbcType=VARCHAR}
+  </update>
+</mapper>

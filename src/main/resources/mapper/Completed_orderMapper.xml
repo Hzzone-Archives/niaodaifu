@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.Completed_orderMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Completed_order">
+    <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from completed_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Completed_order">
+    insert into completed_order (order_id)
+    values (#{orderId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Completed_order">
+    insert into completed_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

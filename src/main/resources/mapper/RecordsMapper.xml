@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.RecordsMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Records">
+    <id column="records_id" jdbcType="VARCHAR" property="recordsId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="record_type" jdbcType="VARCHAR" property="recordType" />
+    <result column="records_time" jdbcType="TIMESTAMP" property="recordsTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    records_id, open_id, record_type, records_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from records
+    where records_id = #{recordsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from records
+    where records_id = #{recordsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Records">
+    insert into records (records_id, open_id, record_type, 
+      records_time)
+    values (#{recordsId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{recordType,jdbcType=VARCHAR}, 
+      #{recordsTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Records">
+    insert into records
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordsId != null">
+        records_id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="recordType != null">
+        record_type,
+      </if>
+      <if test="recordsTime != null">
+        records_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordsId != null">
+        #{recordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null">
+        #{recordType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordsTime != null">
+        #{recordsTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hzzone.dachuang.model.Records">
+    update records
+    <set>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null">
+        record_type = #{recordType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordsTime != null">
+        records_time = #{recordsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where records_id = #{recordsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Records">
+    update records
+    set open_id = #{openId,jdbcType=VARCHAR},
+      record_type = #{recordType,jdbcType=VARCHAR},
+      records_time = #{recordsTime,jdbcType=TIMESTAMP}
+    where records_id = #{recordsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

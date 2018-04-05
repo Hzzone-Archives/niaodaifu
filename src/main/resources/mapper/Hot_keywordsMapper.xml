@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.Hot_keywordsMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Hot_keywords">
+    <id column="keywords_id" jdbcType="VARCHAR" property="keywordsId" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    keywords_id, keywords
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hot_keywords
+    where keywords_id = #{keywordsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from hot_keywords
+    where keywords_id = #{keywordsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Hot_keywords">
+    insert into hot_keywords (keywords_id, keywords)
+    values (#{keywordsId,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Hot_keywords">
+    insert into hot_keywords
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="keywordsId != null">
+        keywords_id,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="keywordsId != null">
+        #{keywordsId,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hzzone.dachuang.model.Hot_keywords">
+    update hot_keywords
+    <set>
+      <if test="keywords != null">
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keywords_id = #{keywordsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Hot_keywords">
+    update hot_keywords
+    set keywords = #{keywords,jdbcType=VARCHAR}
+    where keywords_id = #{keywordsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

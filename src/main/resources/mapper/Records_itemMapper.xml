@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.Records_itemMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Records_item">
+    <id column="item_info" jdbcType="VARCHAR" property="itemInfo" />
+    <id column="item_type" jdbcType="VARCHAR" property="itemType" />
+    <id column="records_id" jdbcType="VARCHAR" property="recordsId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Records_item">
+    delete from records_item
+    where item_info = #{itemInfo,jdbcType=VARCHAR}
+      and item_type = #{itemType,jdbcType=VARCHAR}
+      and records_id = #{recordsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Records_item">
+    insert into records_item (item_info, item_type, records_id
+      )
+    values (#{itemInfo,jdbcType=VARCHAR}, #{itemType,jdbcType=VARCHAR}, #{recordsId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hzzone.dachuang.model.Records_item">
+    insert into records_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemInfo != null">
+        item_info,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="recordsId != null">
+        records_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemInfo != null">
+        #{itemInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordsId != null">
+        #{recordsId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
