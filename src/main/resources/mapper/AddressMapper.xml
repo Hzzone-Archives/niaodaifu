@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hzzone.dachuang.dao.AddressMapper">
+  <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Address">
+    <id column="address_id" jdbcType="VARCHAR" property="address_id" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="address_detail" jdbcType="VARCHAR" property="address_detail" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phone_number" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    address_id, province, city, area, address_detail, user_name, phone_number, openid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Address" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where address_id = #{address_id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByOpenID" parameterType="cn.hzzone.dachuang.model.Address" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from address
+    where openid = #{openid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Address">
+    delete from address
+    where address_id = #{address_id,jdbcType=VARCHAR}
+  </delete>
+
+  <update id="updateByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Address">
+    update address
+    set province = #{province,jdbcType=VARCHAR},
+    city = #{province,jdbcType=VARCHAR},
+    area = #{province,jdbcType=VARCHAR},
+    address_detail = #{address_detail,jdbcType=VARCHAR},
+    user_name = #{user_name,jdbcType=VARCHAR},
+    phone_number = #{phone_number,jdbcType=VARCHAR}
+    where address_id = #{address_id,jdbcType=VARCHAR}
+  </update>
+
+  <insert id="insert" parameterType="cn.hzzone.dachuang.model.Address">
+    insert into address values (#{address_id,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{address_detail,jdbcType=VARCHAR}, #{user_name,jdbcType=VARCHAR},
+    #{phone_number,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR})
+  </insert>
+</mapper>

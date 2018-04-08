@@ -31,6 +31,11 @@ public class Message<T> {
         return msg;
     }
 
+    public Message(T data, int code) {
+        this.data = data;
+        this.code = code;
+    }
+
     public Message(T data, int code, String msg) {
         this.data = data;
         this.code = code;

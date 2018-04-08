@@ -2,6 +2,8 @@ package cn.hzzone.dachuang.dao;
 
 import cn.hzzone.dachuang.model.Order;
 
+import java.util.List;
+
 public interface OrderMapper {
     int deleteByPrimaryKey(String orderId);
 
@@ -14,4 +16,8 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<Order> selectByOpenid(String openid);
+
+
 }

@@ -71,10 +71,4 @@ public class UserController {
 
     }
 
-    @PostMapping("/doRegister")
-    public User doRegister(@RequestParam("openid") String openid) {
-        User user = userService.findUserByID(openid);
-        System.out.println(openid);
-        return user;
-    }
 }

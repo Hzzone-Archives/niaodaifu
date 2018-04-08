@@ -7,6 +7,15 @@
     <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="counts" jdbcType="INTEGER" property="counts" />
   </resultMap>
+  <sql id="Base_Column_List">
+    order_id, product_id, price, counts
+  </sql>
+  <select id="selectByOrderid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_item
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
   <insert id="insert" parameterType="cn.hzzone.dachuang.model.Order_item">
     insert into order_item (order_id, product_id, price, 
       counts)

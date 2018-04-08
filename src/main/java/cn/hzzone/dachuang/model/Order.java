@@ -7,6 +7,17 @@ public class Order {
 
     private String openId;
 
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddressId() {
+
+        return addressId;
+    }
+
+    private String addressId;
+
     private Date orderTime;
 
     public String getOrderId() {

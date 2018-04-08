@@ -114,6 +114,102 @@ public class ProductServiceImpl implements ProductService {
         return d;
     }
 
+    @Override
+    public int insertCartItem(String openid, String productid, int counts) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+        Cart cart = new Cart();
+        cart.setOpenId(openid);
+        cart.setProductId(productid);
+        cart.setCounts(counts);
+        int d = 0;
+        try {
+            d = cartMapper.insert(cart);
+        } catch (Exception e){
+            d = -1;
+        }
+
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
+    public List<OrderDetail> findAllOrderByOpenid(String openid) {
+        List<OrderDetail> orderDetails = new ArrayList<>();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        Order_itemMapper order_itemMapper = sqlSession.getMapper(Order_itemMapper.class);
+        List<Order> orderList = orderMapper.selectByOpenid(openid);
+
+        for(Order order: orderList){
+            Address address = addressMapper.selectByPrimaryKey(order.getAddressId());
+            List<Order_item> order_itemList = order_itemMapper.selectByOrderid(order.getOrderId());
+            orderDetails.add(new OrderDetail(order, order_itemList, address));
+        }
+        sqlSession.close();
+        return orderDetails;
+    }
+
+    @Override
+    public OrderDetail findOrderByOrderid(String order_id) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        Order_itemMapper order_itemMapper = sqlSession.getMapper(Order_itemMapper.class);
+        Order order = orderMapper.selectByPrimaryKey(order_id);
+
+        Address address = addressMapper.selectByPrimaryKey(order.getAddressId());
+        List<Order_item> order_itemList = order_itemMapper.selectByOrderid(order.getOrderId());
+        sqlSession.close();
+        return new OrderDetail(order, order_itemList, address);
+    }
+
+    @Override
+    public List<Address> findAllAdressByOpenid(String openid) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        List<Address> addressList = addressMapper.selectByOpenID(openid);
+        sqlSession.close();
+        return addressList;
+    }
+
+    @Override
+    public Address findAddressByID(String address_id) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        Address address = addressMapper.selectByPrimaryKey(address_id);
+        sqlSession.close();
+        return address;
+    }
+
+    @Override
+    public int deleteAddress(String address_id) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        Integer d = addressMapper.deleteByPrimaryKey(address_id);
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
+    public int updateAddress(Address address) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        Integer d = addressMapper.updateByPrimaryKey(address);
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
+    public int insertAddress(Address address) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        Integer d = addressMapper.insert(address);
+        sqlSession.close();
+        return d;
+    }
+
 
     @Override
     public Product findProductByID(String productid) {

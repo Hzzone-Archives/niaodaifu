@@ -27,6 +27,23 @@ public interface ProductService {
 
     public int updateCartItemCounts(String openid, String productid, int counts);
 
+    public int insertCartItem(String openid, String productid, int counts);
+
+
+    public List<OrderDetail> findAllOrderByOpenid(String openid);
+
+    public OrderDetail findOrderByOrderid(String order_id);
+
+    public List<Address> findAllAdressByOpenid(String openid);
+
+    public Address findAddressByID(String address_id);
+
+    public int deleteAddress(String address_id);
+
+    public int updateAddress(Address address);
+
+    public int insertAddress(Address address);
+
 
 
 }
