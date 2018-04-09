@@ -85,7 +85,6 @@ display:block;
     width: 100%;
 }
 .product_item navigator{
-    width: 100%;
     display: flex;
 }
 
@@ -99,7 +98,6 @@ display:block;
     width: 100%;
 }
 .product_item {
-    width: 100%;
     padding: 10rpx;
     border-bottom-style: solid;
     border-bottom-width: 5rpx;
@@ -109,8 +107,10 @@ display:block;
 .product_des {
     display: flex;
     flex-direction: column;
-    margin-left: 10%; 
     padding: 10rpx;
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap; 
 }
 
 image.enter_button {

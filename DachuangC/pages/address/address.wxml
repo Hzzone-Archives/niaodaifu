@@ -6,13 +6,15 @@
 
 <view class='container'>
     <view class='container list'>
-    <view wx:for="{{ items }}" wx:key="{{item.address_id}}" >
+    <view wx:for="{{ items }}" wx:key="{{item.address_id}}" class='tab1'>
     <view class='address_item'>
-        <view class='user'>
-            <text class='user_name'>{{ item.user_name }}</text>
-            <text class='phone'>{{ item.phone }}</text>
+        <view bindtap='chooseAddress' data-index='{{index}}'>
+            <view class='user'>
+                <text class='user_name'>{{ item.user_name }}</text>
+                <text class='phone'>{{ item.phone_number }}</text>
+            </view>
+            <view class='detail_info'>{{ item.province }}{{ item.city }}{{ item.area }}{{ item.address_detail }}</view>
         </view>
-        <view class='detail_info'>{{ item.detail }}</view>
         <view class='action'>
             <navigator class='action_item' url='/pages/edit_address/edit_address?address_id={{item.address_id}}'>
                 <image src='/images/文本编辑.png'></image>

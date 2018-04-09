@@ -1,16 +1,13 @@
 <view class="wx-view_KHAWVZ" >
     <swiper autoplay="True" class="wx-swiper_Mn3JMs"  indicator-dots="True" lower-threshold="50">
-        <swiper-item class="c-full wx-swiper-item_F6vCx8" >
-            <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2"  mode="aspectFill" src="http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg" style="background-image: url(http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
-        </swiper-item>
-        <swiper-item class="c-full wx-swiper-item_qGeJVI" >
-            <image class="wx-image_HsAX8s2"  mode="aspectFill" src="http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg" style="background-image: url(http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
+        <swiper-item class="c-full wx-swiper-item_F6vCx8" wx:for="{{product_info.product_simple_images}}">
+            <image bindtap="tap_d5808da3" class="wx-image_HsAX8s2"  mode="aspectFill" src="{{item.url}}" style="background-image: url({{item.url}}); background-size: cover; background-position: center center; background-repeat: no-repeat; "/>
         </swiper-item>
     </swiper>
-    <text class="c-block wx-text_V55JEt" >日本姬弹簧草</text>
+    <text class="c-block wx-text_V55JEt" >{{product_info.productName}}</text>
     <view class="wx-view_Ipiy3Y" >
         <view class="wx-navigator_8s8V9p" bindtap='actionSheetTap'>
-            <text class="c-block wx-text_EPMInA" >￥167.00 去购买</text>
+            <text class="c-block wx-text_EPMInA" >￥{{product_info.price}} 去购买</text>
         </view>
         <view class="wx-view_q8yXI9" >
             <image class="wx-image_YAG40m"  mode="aspectFit" src="/images/爱心.png" style="background-image: url(/images/爱心.png); background-size: contain; background-position: center center; background-repeat: no-repeat; "/>
@@ -19,7 +16,7 @@
     
 <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
   <block wx:for="{{actionSheetItems}}">
-    <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}">{{item}}</action-sheet-item>
+    <action-sheet-item class="item" bindtap="bindItemTap" data-name="{{item}}" data-index="{{index}}">{{item}}</action-sheet-item>
   </block>
   <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
 </action-sheet>
@@ -27,14 +24,7 @@
     <view class='line'></view>
 
     <view class='description'>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-7.jpg'></image>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-6.jpg'></image>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-5.jpg'></image>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-4.jpg'></image>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-3.jpg'></image>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-2.jpg'></image>
-        <image src='http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-1.jpg'></image>
-
+        <image src='{{item.url}}' wx:for="{{product_info.product_intro_images}}"></image>
     </view>
 
 

@@ -166,6 +166,42 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Completed_order> findCompletedOrder(String openid) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Completed_orderMapper completed_orderMapper  = sqlSession.getMapper(Completed_orderMapper.class);
+        List<Completed_order> d = completed_orderMapper.selectByOpenid(openid);
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
+    public List<Tocomplete_order> findToCompletedOrder(String openid) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Tocomplete_orderMapper tocomplete_orderMapper  = sqlSession.getMapper(Tocomplete_orderMapper.class);
+        List<Tocomplete_order> d = tocomplete_orderMapper.selectByOpenid(openid);
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
+    public int insertOrder(Order order) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+        Integer d = orderMapper.insert(order);
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
+    public int insertOrder_item(Order_item order_item) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Order_itemMapper order_itemMapper = sqlSession.getMapper(Order_itemMapper.class);
+        Integer d = order_itemMapper.insert(order_item);
+        sqlSession.close();
+        return d;
+    }
+
+    @Override
     public List<Address> findAllAdressByOpenid(String openid) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
@@ -173,6 +209,7 @@ public class ProductServiceImpl implements ProductService {
         sqlSession.close();
         return addressList;
     }
+
 
     @Override
     public Address findAddressByID(String address_id) {

@@ -1,4 +1,6 @@
 // pages/edit_address/edit_address.js
+
+const app = getApp()
 import { $wuxPicker, $wuxPickerCity } from '../../dist/components/wux'
 import { $wuxDialog } from '../../dist/components/wux'
 
@@ -8,13 +10,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    address_id: null,
-    user_name: "黄智忠",
-    area: "吉州区",
-    city: "吉安",
-    province: "江西",
-    address_detail: "四川大学江安校区西南门",
-    phone_number: "17721876903",
+          address_id: null,
+          user_name: "",
+          area: "",
+          city: "",
+          province: "",
+          address_detail: "",
+          phone_number: "",
+          openid: "",
+          url: ""
   },
 
   /**
@@ -22,7 +26,47 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    this.data.address_id = options.address_id
+    console.log(app.globalData)
+    this.setData({
+        openid: app.globalData.userInfo.openId
+    })
+    // this.data.address_id = options.address_id
+    if (options.address_id==''){
+        console.log("新建地址")
+        this.setData({
+            url: "http://127.0.0.1:8080/add_address"
+        })
+    } else {
+        this.setData({
+            url: "http://127.0.0.1:8080/update_address"
+        })
+        wx.request({
+            url: 'http://127.0.0.1:8080/address_detail',
+            data: {
+                address_id: options.address_id,
+
+            },
+            method: 'post',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: res => {
+                console.log(res.data)
+                var address = res.data
+                this.setData({
+                    address_id: address.address_id,
+                    user_name: address.user_name,
+                    area: address.area,
+                    city: address.city,
+                    province: address.province,
+                    address_detail: address.address_detail,
+                    phone_number: address.phone_number,
+                    openid: app.globalData.userInfo.openId
+                })
+            }
+        })
+    }
+    
   },
 
   /**
@@ -89,15 +133,55 @@ Page({
       })
   },
   save_address: function() {
+      var that = this
       $wuxDialog.confirm({
           title: '保存地址',
           content: '你确定要保存地址吗？',
           onConfirm(e) {
               console.log('保存地址')
+              that.setData({
+                  user_name: that.data.user_name,
+                  area: that.data.area,
+                  city: that.data.city,
+                  province: that.data.province,
+                  address_detail: that.data.address_detail,
+                  phone_number: that.data.phone_number,
+              })
+            //   console.log("111" + that.data.address_id)
+              wx.request({
+                  url: that.data.url,
+                  data: that.data,
+                  method: 'post',
+                  header: {
+                      'content-type': 'application/x-www-form-urlencoded' // 默认值
+                  },
+                  success: res => {
+                      console.log(res.data)
+                      console.log("保存成功")
+                      wx.showToast({
+                          title: '保存成功',
+                      })
+                  }
+              })
           },
           onCancel(e) {
               console.log('不保存')
           },
+      })
+  },
+  bindKeyInput1: function(e){
+      this.setData({
+          user_name: e.detail.value
+      })
+  },
+  bindKeyInput2: function (e) {
+      this.setData({
+          phone_number: e.detail.value
+      })
+  },
+  bindKeyInput3: function (e) {
+      this.setData({
+          address_detail: e.detail.value
       })
   }
 })

@@ -1,0 +1,54 @@
+<!--pages/order_detail/order_detail.wxml-->
+<view class='weui-form-preview'>
+    <view class='weui-form-preview__hd'>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>付款金额</view>
+            <view class='weui-form-preview__value_in-hd'>¥{{order.totals}}</view>
+        </view>
+    </view>
+    <view class='weui-form-preview__bd'>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>时间</view>
+            <view class='weui-form-preview__value'>{{order.orderTime}}</view>
+        </view>
+    </view>
+    <view class='weui-form-preview__bd'>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>状态</view>
+            <view class='weui-form-preview__value' wx:if="{{order.status}}">已完成</view>
+            <view class='weui-form-preview__value' wx:else>待支付</view>
+        </view>
+    </view>
+    <view class='weui-form-preview__bd weui-form-preview__bd_border'>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>收件人</view>
+            <view class='weui-form-preview__value'>{{order.address.user_name}}</view>
+        </view>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>联系方式</view>
+            <view class='weui-form-preview__value'>{{order.address.phone_number}}</view>
+        </view>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>详细地址</view>
+            <view class='weui-form-preview__value'>{{address}}</view>
+        </view>
+    </view>
+    <view class='weui-form-preview__bd weui-form-preview__bd_border' wx:for="{{product}}">
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>名称</view>
+            <navigator url='/pages/shop_detail/shop_detail?productId={{item.product_id}}' class='weui-form-preview__value'>{{item.product_name}}</navigator>
+        </view>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>数量</view>
+            <view class='weui-form-preview__value'>{{item.counts}}</view>
+        </view>
+        <view class='weui-form-preview__item'>
+            <view class='weui-form-preview__label'>单价</view>
+            <view class='weui-form-preview__value'>{{item.price}}</view>
+        </view>
+    </view>
+</view>
+<view class='weui-form-preview__ft'>
+    <view wx:if="{{!order.status}}" class='weui-form-preview__btn weui-form-preview__btn_primary' hover-class="weui-form-preview__btn_active" bindtap='goToOrderDetail'>去支付</view>
+    <view class='weui-form-preview__btn weui-form-preview__btn_primary' hover-class="weui-form-preview__btn_active" bindtap='goToOrderDetail' style='color: red;'>删除</view>
+</view>

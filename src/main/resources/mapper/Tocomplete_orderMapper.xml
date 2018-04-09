@@ -4,6 +4,15 @@
   <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Tocomplete_order">
     <id column="order_id" jdbcType="VARCHAR" property="orderId" />
   </resultMap>
+  <sql id="Base_Column_List">
+    order_id, open_id
+  </sql>
+  <select id="selectByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tocomplete_order
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from tocomplete_order
     where order_id = #{orderId,jdbcType=VARCHAR}

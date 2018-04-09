@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      z_index_value: 0
+      z_index_value: 0,
+      hot_product: [],
+      new_product: []
   },
 
   /**
@@ -20,6 +22,34 @@ Page({
       //初始化的时候渲染wxSearchdata
       WxSearch.init(that, 43, ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification']);
       WxSearch.initMindKeys(['weappdev.com', '微信小程序开发', '微信开发', '微信小程序']);
+      wx.request({
+          url: 'http://127.0.0.1:8080/hot_product',
+          method: 'get',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: res => {
+              console.log(res.data)
+              this.setData({
+                  hot_product: res.data   
+              })
+          }
+      })
+      wx.request({
+          url: 'http://127.0.0.1:8080/new_product',
+          method: 'get',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: res => {
+              console.log(res.data)
+              this.setData({
+                  new_product: res.data
+              })
+          }
+      })
+
+
   },
 
   /**
@@ -33,6 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      console.log(this.data.new_product)
 
   },
 

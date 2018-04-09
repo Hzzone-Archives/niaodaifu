@@ -1,25 +1,99 @@
 package cn.hzzone.dachuang.controller;
 
-import cn.hzzone.dachuang.model.Address;
-import cn.hzzone.dachuang.model.CartDetail;
-import cn.hzzone.dachuang.model.Product;
-import cn.hzzone.dachuang.model.ProductDetail;
+import cn.hzzone.dachuang.model.*;
 import cn.hzzone.dachuang.service.ProductService;
 import cn.hzzone.dachuang.util.Message;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class ProductController {
     @Autowired
     ProductService productService;
+
+    @PostMapping("/order_detail")
+    public OrderDetail getOrderDetail(@RequestParam("orderid") String orderid) {
+        return productService.findOrderByOrderid(orderid);
+    }
+
+
+    @PostMapping("/all_order")
+    public List<OrderDetail> getAllOrder(@RequestParam("openid") String openid) {
+        return productService.findAllOrderByOpenid(openid);
+    }
+
+    @PostMapping("/completed_order")
+    public List<String> getCompleteOrder(@RequestParam("openid") String openid) {
+        List<Completed_order> orders = productService.findCompletedOrder(openid);
+        List<String> order_ids = new ArrayList<>();
+        for(Completed_order completed_order: orders){
+            order_ids.add(completed_order.getOrderId());
+        }
+        return order_ids;
+    }
+
+    @PostMapping("/tocomplete_order")
+    public List<String> getToCompleteOrder(@RequestParam("openid") String openid) {
+        List<Tocomplete_order> orders = productService.findToCompletedOrder(openid);
+        List<String> order_ids = new ArrayList<>();
+        for(Tocomplete_order tocomplete_order: orders){
+            order_ids.add(tocomplete_order.getOrderId());
+        }
+        return order_ids;
+    }
+
+    @PostMapping("/add_order")
+    public Message<String> addOrder(@RequestParam("openid") String openid,
+                                    @RequestParam("address_id") String address_id) {
+        System.out.println(address_id);
+        Order order = new Order();
+        order.setAddressId(address_id);
+        order.setOpenId(openid);
+        order.setOrderTime(new Date());
+        String order_id = UUID.randomUUID().toString();
+        order.setOrderId(order_id);
+        System.out.println(order.getAddressId());
+        productService.insertOrder(order);
+        Message<String> message = new Message(order_id, 1, "添加成功");
+        return message;
+    }
+
+    @PostMapping("/add_order_item")
+    public Message<Integer> addOrderItem(@RequestParam("order_id") String order_id,
+                                         @RequestParam("product_id") String product_id,
+                                         @RequestParam("price") Double price,
+                                         @RequestParam("counts") Integer counts) {
+
+        Order_item order_item = new Order_item();
+        order_item.setCounts(counts);
+        order_item.setOrderId(order_id);
+        order_item.setPrice(price);
+        order_item.setProductId(product_id);
+        Integer d = productService.insertOrder_item(order_item);
+        return new Message<Integer>(d, 1, "添加成功");
+    }
+
+
+    @PostMapping("/add_order_items")
+    public Message<Integer> addOrderItems(@RequestBody Map<String, String>[] request_body) {
+
+        Integer d = 0;
+        for(Map<String, String> order_item_map: request_body) {
+            Order_item order_item = new Order_item();
+            System.out.println(order_item_map.toString());
+
+            order_item.setCounts(Integer.parseInt(order_item_map.get("num")));
+            order_item.setOrderId(order_item_map.get("order_id"));
+            order_item.setPrice(Double.parseDouble(order_item_map.get("price")));
+            order_item.setProductId(order_item_map.get("id"));
+            d += productService.insertOrder_item(order_item);
+            System.out.println(d);
+        }
+
+        return new Message<Integer>(d, 1, "添加成功");
+    }
 
     @PostMapping("/address")
     public List<Address> getAddressList(@RequestParam("openid") String openid) {

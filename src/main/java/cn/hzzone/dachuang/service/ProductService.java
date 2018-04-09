@@ -34,6 +34,15 @@ public interface ProductService {
 
     public OrderDetail findOrderByOrderid(String order_id);
 
+    public List<Completed_order> findCompletedOrder(String openid);
+
+    public List<Tocomplete_order> findToCompletedOrder(String openid);
+
+    public int insertOrder(Order order);
+
+    public int insertOrder_item(Order_item order_item);
+
+
     public List<Address> findAllAdressByOpenid(String openid);
 
     public Address findAddressByID(String address_id);

@@ -64,7 +64,7 @@
     height: 180rpx;
 }
 .orders-list view{
-    line-height: 60rpx;
+    line-height: 50rpx;
 }
 
 .orders-footer{

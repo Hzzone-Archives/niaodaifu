@@ -1,4 +1,5 @@
 // pages/address/address.js
+const app = getApp()
 import { $wuxDialog } from '../../dist/components/wux'
 Page({
 
@@ -10,39 +11,13 @@ Page({
           {
               address_id: '1111',
               user_name: '黄智忠',
-              phone: '17721876903',
-              detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
+              phone_number: '17721876903',
+              address_detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
+              province: '四川省',
+              city: '成都市',
+              area: '双流县',
+              openid: 'oVL684iOhwDmAR70giu2EgCjBWrE'
           },
-          {
-              address_id: '2',
-              user_name: '黄智忠',
-              phone: '17721876903',
-              detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
-          },
-          {
-              address_id: '3',
-              user_name: '黄智忠',
-              phone: '17721876903',
-              detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
-          },
-          {
-              address_id: '4',
-              user_name: '黄智忠',
-              phone: '17721876903',
-              detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
-          },
-          {
-              address_id: '5',
-              user_name: '黄智忠',
-              phone: '17721876903',
-              detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
-          },
-          {
-              address_id: '6',
-              user_name: '黄智忠',
-              phone: '17721876903',
-              detail: '四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学四川大学',
-          }
       ]
   
   },
@@ -51,7 +26,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+      console.log(app.globalData)
+      
   },
 
   /**
@@ -65,7 +41,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      wx.request({
+          url: 'http://127.0.0.1:8080/address',
+          data: {
+              openid: app.globalData.userInfo.openId,
+              //   openid: ''
 
+          },
+          method: 'post',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: res => {
+              console.log(res.data)
+              this.setData({
+                  items: res.data,
+              })
+          }
+      })
   },
 
   /**
@@ -111,6 +104,22 @@ Page({
           content: '是否确认删除地址？',
           onConfirm(e) {
             console.log('删除地址')
+            var address_id = that.data.items[$index].address_id
+            wx.request({
+                url: 'http://127.0.0.1:8080/delete_address',
+                data: {
+                    address_id: address_id,
+                    //   openid: ''
+
+                },
+                method: 'post',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                success: res => {
+                    console.log(res.data)
+                }
+            })
             that.data.items.splice($index, 1)
             // console.log(that.data)
             // console.log()
@@ -125,5 +134,22 @@ Page({
 
       console.log(this.data.items.length)
 
+  },
+  chooseAddress(e) {
+      const index = e.currentTarget.dataset.index
+      var pages = getCurrentPages()
+      var currPage = pages[pages.length - 1]
+      var prevPage = pages[pages.length - 2]
+      var address = this.data.items[index]
+      prevPage.setData({
+          address: {
+              address_id: address.address_id,
+              name: address.user_name,
+              phone: address.phone_number,
+              detail: address.province + address.city + address.area + address.address_detail
+          },
+          hasAddress: true,
+      })
+      wx.navigateBack();
   }
 })

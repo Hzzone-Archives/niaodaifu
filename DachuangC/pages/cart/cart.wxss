@@ -98,14 +98,14 @@
     width: 45rpx;
     height: 45rpx;
 }
-.order-icon image,.order-icon navigator{
+.order-icon image,.order-icon view{
   display: block;
   width: 45rpx;
   height: 45rpx;
 }
 .cart-toatl-price{
     float: right;
-    width: 120rpx;
+    width: 180rpx;
 }
 
 .cart-no-data{

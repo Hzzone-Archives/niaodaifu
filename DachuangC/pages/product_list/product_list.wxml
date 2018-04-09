@@ -2,11 +2,11 @@
 <view class='product_view'>
   <view class='product_list'>
     <view class='product_item' wx:for="{{ items }}" wx:key="" >
-      <navigator url='/pages/shop_detail/shop_detail?product_image={{item.product_image}}&product_name={{item.product_name&product_price&item.product_price}}'>
-        <image src='{{ item.product_image }}' class='product_small_image'></image>
+      <navigator url='/pages/shop_detail/shop_detail?productId={{item.productId}}'>
+        <image src='{{ item.product_simple_images[0].url }}' class='product_small_image'></image>
         <view class="product_des">
-          <text class='product_name'>{{ item.product_name }}</text>
-          <text class='product_price'>¥ {{ item.product_price }}</text></view>
+          <text class='product_name'>{{ item.productName }}</text>
+          <text class='product_price'>¥ {{ item.price }}</text></view>
         <image class='enter_button' src='/images/箭头.png'></image>
       </navigator>
     </view>

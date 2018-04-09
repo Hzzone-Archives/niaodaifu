@@ -10,15 +10,12 @@ display:block;
 }
 
 .product_name {
-    font-size: 30rpx;
+    font-size: 25rpx;
     /* -ms-content-zoom-limit-max: 10; */
-    overflow:hidden; 
-    text-overflow:ellipsis;
-    white-space:nowrap; 
 }
 
 .product_price {
-    font-size: 30rpx;
+    font-size: 25rpx;
     color: red;  
 }
 
@@ -53,6 +50,10 @@ display:block;
     display: flex;
     flex-direction: column;
     padding: 15rpx;
+
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap; 
 }
 
 image.enter_button {
@@ -61,5 +62,5 @@ image.enter_button {
     /* margin: 10rpx; */
     /* margin-left: 50rpx;  */
     padding: 20rpx;
-    margin-left: 10%;
+    /* margin-left: 10%; */
 }

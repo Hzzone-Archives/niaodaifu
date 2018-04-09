@@ -34,6 +34,19 @@ Page({
     })
     if (options.title=="所有产品") {
         console.log("从所有产品进入")
+        wx.request({
+            url: 'http://127.0.0.1:8080/all_product',
+            method: 'get',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: res => {
+                console.log(res.data)
+                this.setData({
+                    items: res.data
+                })
+            }
+        })
     } else if (options.title == "搜索结果") {
         console.log("从搜索结果进入")
     }

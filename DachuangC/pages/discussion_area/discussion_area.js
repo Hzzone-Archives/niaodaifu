@@ -127,7 +127,7 @@ Page({
   change_color: function (e) {
       var $index = e.currentTarget.dataset.index
       console.log($index)
-      this.data.posts[$index]["isSupport"] = !this.data.posts[$index]["isSupport"]
+      this.data.posts[$indnewex]["isSupport"] = !this.data.posts[$index]["isSupport"]
       this.setData({
           posts: this.data.posts,
       })

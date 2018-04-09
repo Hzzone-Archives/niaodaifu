@@ -131,3 +131,23 @@ page{
 	-webkit-tap-highlight-color: transparent;
 }
 
+
+.weui-form-preview{position:relative;background-color:#fff}
+
+.weui-form-preview{
+    margin-bottom: 15rpx;
+}
+
+.weui-form-preview__hd{position:relative;padding:10px 15px;text-align:right;line-height:2.5em}
+
+.weui-form-preview__item{overflow:hidden}
+
+.weui-form-preview__label{float:left;margin-right:1em;min-width:4em;color:#999;text-align:justify;text-align-last:justify}
+
+.weui-form-preview__value_in-hd{font-size:26px}
+
+.weui-form-preview__ft{position:relative;line-height:50px;display:-webkit-box;display:-webkit-flex;display:flex}
+
+.weui-form-preview__btn{position:relative;display:block;-webkit-box-flex:1;-webkit-flex:1;flex:1;color:#3cc51f;text-align:center}
+
+.weui-form-preview__btn_primary{color:#0bb20c}

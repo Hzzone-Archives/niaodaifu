@@ -16,7 +16,9 @@
         "pages/discussion_area/discussion_area",
         "pages/user_detail/user_detail",
         "pages/post_detail/post_detail",
-        "pages/edit_address/edit_address"
+        "pages/edit_address/edit_address",
+        "pages/order_detail/order_detail",
+        "pages/msg_success/msg_success"
     ],
     "window": {
         "backgroundTextStyle": "light",
