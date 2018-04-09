@@ -2,6 +2,8 @@ package cn.hzzone.dachuang.dao;
 
 import cn.hzzone.dachuang.model.Post;
 
+import java.util.List;
+
 public interface PostMapper {
     int deleteByPrimaryKey(String postId);
 
@@ -14,4 +16,6 @@ public interface PostMapper {
     int updateByPrimaryKeySelective(Post record);
 
     int updateByPrimaryKey(Post record);
+
+    List<Post> selectAllPost();
 }

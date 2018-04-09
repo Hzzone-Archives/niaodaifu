@@ -11,6 +11,11 @@
   <sql id="Base_Column_List">
     post_id, post_time, post_content, title, open_id
   </sql>
+  <select id="selectAllPost" parameterType="cn.hzzone.dachuang.model.Post" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from post
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

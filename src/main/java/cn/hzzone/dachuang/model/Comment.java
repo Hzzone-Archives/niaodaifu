@@ -1,5 +1,7 @@
 package cn.hzzone.dachuang.model;
 
+import java.util.Date;
+
 public class Comment {
     private String commentId;
 
@@ -11,7 +13,18 @@ public class Comment {
 
     private String commentContent;
 
-    private String commentTime;
+    private Date commentTime;
+
+    public Comment(String commentId, String postId, String fromOpenid, String toOpenid, String commentContent, Date commentTime) {
+        this.commentId = commentId;
+        this.postId = postId;
+        this.fromOpenid = fromOpenid;
+        this.toOpenid = toOpenid;
+        this.commentContent = commentContent;
+        this.commentTime = commentTime;
+    }
+
+    public Comment(){}
 
     public String getCommentId() {
         return commentId;
@@ -53,11 +66,11 @@ public class Comment {
         this.commentContent = commentContent == null ? null : commentContent.trim();
     }
 
-    public String getCommentTime() {
+    public Date getCommentTime() {
         return commentTime;
     }
 
-    public void setCommentTime(String commentTime) {
-        this.commentTime = commentTime == null ? null : commentTime.trim();
+    public void setCommentTime(Date commentTime) {
+        this.commentTime = commentTime == null ? null : commentTime;
     }
 }

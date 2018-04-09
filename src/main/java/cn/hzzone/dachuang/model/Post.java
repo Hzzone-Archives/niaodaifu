@@ -7,6 +7,18 @@ public class Post {
 
     private Date postTime;
 
+    public Post() {
+
+    }
+
+    public Post(String postId, Date postTime, String postContent, String title, String openId) {
+        this.postId = postId;
+        this.postTime = postTime;
+        this.postContent = postContent;
+        this.title = title;
+        this.openId = openId;
+    }
+
     private String postContent;
 
     private String title;

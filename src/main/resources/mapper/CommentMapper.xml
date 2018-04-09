@@ -7,11 +7,17 @@
     <result column="from_openid" jdbcType="VARCHAR" property="fromOpenid" />
     <result column="to_openid" jdbcType="VARCHAR" property="toOpenid" />
     <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-    <result column="comment_time" jdbcType="VARCHAR" property="commentTime" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
   </resultMap>
   <sql id="Base_Column_List">
     comment_id, post_id, from_openid, to_openid, comment_content, comment_time
   </sql>
+  <select id="selectByPostID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comment
+    where post_id = #{postId,jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

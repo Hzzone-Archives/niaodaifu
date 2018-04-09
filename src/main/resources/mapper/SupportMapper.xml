@@ -3,20 +3,28 @@
 <mapper namespace="cn.hzzone.dachuang.dao.SupportMapper">
   <resultMap id="BaseResultMap" type="cn.hzzone.dachuang.model.Support">
     <id column="support_id" jdbcType="VARCHAR" property="supportId" />
-    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <id column="open_id" jdbcType="VARCHAR" property="openId" />
   </resultMap>
   <sql id="Base_Column_List">
     support_id, open_id
   </sql>
+  <select id="selectByAll" parameterType="cn.hzzone.dachuang.model.Support" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from support
+    where support_id = #{supportId,jdbcType=VARCHAR}
+    AND open_id = #{openId,jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from support
     where support_id = #{supportId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="cn.hzzone.dachuang.model.Support">
     delete from support
     where support_id = #{supportId,jdbcType=VARCHAR}
+    AND open_id = #{openId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="cn.hzzone.dachuang.model.Support">
     insert into support (support_id, open_id)
