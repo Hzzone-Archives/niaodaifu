@@ -18,7 +18,8 @@
         "pages/post_detail/post_detail",
         "pages/edit_address/edit_address",
         "pages/order_detail/order_detail",
-        "pages/msg_success/msg_success"
+        "pages/msg_success/msg_success",
+        "pages/add_post/add_post"
     ],
     "window": {
         "backgroundTextStyle": "light",

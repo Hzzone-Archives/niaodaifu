@@ -9,6 +9,16 @@ public class PostDetail extends Post{
     private String img_url;
     private String user_name;
 
+    public Integer getComment_counts() {
+        return comment_counts;
+    }
+
+    public void setComment_counts(Integer comment_counts) {
+        this.comment_counts = comment_counts;
+    }
+
+    private Integer comment_counts;
+
     public void setSupport(Boolean support) {
         isSupport = support;
     }
@@ -37,10 +47,11 @@ public class PostDetail extends Post{
         return img_url;
     }
 
-    public PostDetail(Post post, String img_url, String user_name, Boolean isSupport) {
+    public PostDetail(Post post, String img_url, String user_name, Boolean isSupport, Integer comment_counts) {
         super(post.getPostId(), post.getPostTime(), post.getPostContent(), post.getTitle(), post.getOpenId());
         this.img_url = img_url;
         this.user_name = user_name;
         this.isSupport = isSupport;
+        this.comment_counts = comment_counts;
     }
 }

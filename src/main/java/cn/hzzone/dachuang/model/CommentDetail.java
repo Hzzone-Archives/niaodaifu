@@ -3,40 +3,38 @@ package cn.hzzone.dachuang.model;
 public class CommentDetail extends Comment {
 
 
-    public CommentDetail(Comment comment, String img_url, String user_name, Boolean isSupport) {
+    public CommentDetail(Comment comment, User from_user, User to_user, Boolean isSupport) {
         super(comment.getCommentId(), comment.getPostId(), comment.getFromOpenid(), comment.getToOpenid(), comment.getCommentContent(), comment.getCommentTime());
-        this.toImg_url = img_url;
-        this.toUser_name = user_name;
+        this.from_user = from_user;
+        this.to_user = to_user;
         this.isSupport = isSupport;
     }
 
-    public void setToImg_url(String toImg_url) {
-        this.toImg_url = toImg_url;
+    private User from_user;
+    private User to_user;
+    private Boolean isSupport;
+
+    public User getFrom_user() {
+        return from_user;
     }
 
-    public void setSupport(boolean support) {
-        isSupport = support;
+    public User getTo_user() {
+        return to_user;
     }
 
-    public void setToUser_name(String toUser_name) {
-        this.toUser_name = toUser_name;
-    }
-
-    private String toImg_url;
-
-    public boolean isSupport() {
+    public Boolean getSupport() {
         return isSupport;
     }
 
-    private boolean isSupport;
-
-    public String getToImg_url() {
-        return toImg_url;
+    public void setFrom_user(User from_user) {
+        this.from_user = from_user;
     }
 
-    public String getToUser_name() {
-        return toUser_name;
+    public void setTo_user(User to_user) {
+        this.to_user = to_user;
     }
 
-    private String toUser_name;
+    public void setSupport(Boolean support) {
+        isSupport = support;
+    }
 }

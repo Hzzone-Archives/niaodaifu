@@ -28,6 +28,7 @@ public class UserController {
                         @RequestParam("city") String city, @RequestParam("country") String country, @RequestParam("gender") boolean gender,
                         @RequestParam("nickName") String nickName, @RequestParam("province") String province,
                         @RequestParam("language") String user_language) throws IOException {
+        System.out.println(code);
         String url = String.format("https://api.weixin.qq.com/sns/jscode2session?appid=wxbfe8a9c01dbe2b38&secret=ff6fca27a658664b6267f4b829a88764&js_code=%s&grant_type=authorization_code",
                 code);
 
@@ -36,6 +37,7 @@ public class UserController {
                 .get()
                 .build();
         Response response = client.newCall(request).execute();
+        System.out.println(response);
         if(response.code()==200) {
 //            System.out.println(response.body().string());
             String return_data = response.body().string();

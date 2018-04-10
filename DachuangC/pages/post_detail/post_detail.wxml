@@ -1,28 +1,28 @@
 <!--pages/post_detail/post_detail.wxml-->
 <view class='post_detail'>
     <view class='user'>
-        <image src='{{ author.author_head_img }}'></image>
+        <image src='{{ post.img_url }}'></image>
         <view class='flex_view'>
-            <text id='user_name'>{{ author.user_name }}</text>
-            <text id='time'>{{ author.time }}</text>
+            <text id='user_name'>{{ post.user_name }}</text>
+            <text id='time'>{{ post.postTime }}</text>
         </view>
         
     </view>
     <view class='title'>
-        <text>{{ author.title }}</text>
+        <text>{{ post.title }}</text>
     </view>
     <view class='content'>
-        <text>{{ author.content }}</text>
+        <text>{{ post.postContent }}</text>
     </view>
 
     <view class='action_area'>
-            <text>{{author.comment_counts}}回复</text>
+            <text>{{post.comment_counts}}回复</text>
             <view>
-                <view wx:if="{{author.isSupport}}" class='aciton_button' bindtap='post_cancel_support' bindtap='post_change_color'>              
+                <view wx:if="{{post.support}}" class='aciton_button' bindtap='post_change_color'>              
                     <image src='/images/赞_填充.png'></image>
                     <text>点赞</text>
                 </view>
-                <view wx:else class='aciton_button' bindtap='post_support' bindtap='post_change_color'>
+                <view wx:else class='aciton_button' bindtap='post_change_color'>
                     <image src='/images/赞.png'></image>
                     <text>点赞</text>
                 </view>
@@ -37,31 +37,32 @@
 
 
 <!--pages/post_detail/post_detail.wxml-->
-<view class='post_detail' wx:for='{{comments}}' wx:key='{{comment_id}}'>
+<view class='post_detail' wx:for='{{comments}}' wx:key='{{commentId}}'>
     <view class='user'>
-        <image src='{{ item.head_img }}'></image>
+        <image src='{{ item.from_user.userImg }}'></image>
         <view class='flex_view'>
-            <text id='user_name'>{{ item.user_name }}</text>
-            <text id='time'>{{item.comment_index}}楼 {{ item.time }}</text>
+            <text id='user_name'>{{ item.from_user.userName }}</text>
+            <text id='time'>{{index+1}}楼 {{ item.commentTime }}</text>
         </view>
         
     </view>
     <view class='content'>
-        <text wx:if="{{item.to_user_id!=''}}">@{{item.to_user_name}} </text>
-        <text>{{ item.content }}</text>
+        <!-- <text wx:if="{{item.to_user_id!=''}}">@{{item.to_user_name}} </text> -->
+        <navigator wx:if="{{item.to_user!=null}}" url="" class="weui-msg__link">@{{item.to_user.userName}} </navigator>
+        <text>{{ item.commentContent }}</text>
     </view>
     <view class='action_area'>
                 <image>/images/占位.png</image>
                 <view>
-                <view wx:if="{{item.isSupport}}" class='aciton_button' bindtap='cancel_support' bindtap='change_color' data-index='{{index}}'>              
+                <view wx:if="{{item.support}}" class='aciton_button' bindtap='change_color' data-index='{{index}}'>              
                     <image src='/images/赞_填充.png'></image>
                     <text>点赞</text>
                 </view>
-                <view wx:else class='aciton_button' bindtap='support' bindtap='change_color' data-index='{{index}}'>
+                <view wx:else class='aciton_button' bindtap='change_color' data-index='{{index}}'>
                     <image src='/images/赞.png'></image>
                     <text>点赞</text>
                 </view>
-                <view class='aciton_button'>
+                <view class='aciton_button' bindtap='addNewComments' data-index='{{index}}'>
                     <image src='/images/comments.png'></image>
                     <text>回复</text>
                 </view>
@@ -71,7 +72,7 @@
 </view>
 
 <view class='comment_area container'>
-    <textarea class='comment_input'></textarea>
+    <textarea class='comment_input' bindinput="bindTextAreaBlur" value='{{input_content}}'></textarea>
     <view class='comment_button' bindtap='add_comment'>添加回复</view>
      
 </view>

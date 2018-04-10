@@ -8,6 +8,7 @@
 .post_item {
     padding: 10rpx;
     border-bottom: 15rpx solid #eee;
+    width: 720rpx;
 }
 
 .post_info {

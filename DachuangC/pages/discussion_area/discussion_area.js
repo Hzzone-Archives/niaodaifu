@@ -1,6 +1,8 @@
 // pages/discussion_area/discussion_area.js
 import { $wuxRefresher } from '../../dist/components/wux'
 
+const app = getApp()
+
 Page({
 
   /**
@@ -15,32 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-          posts: [
-              {
-                  post_id: '1',
-                  user_id: '2',
-                  user_head_img: 'http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-01.png',
-                  user_name: 'Hzzone',
-                  time: '2018/3/25 下午8:10:10',
-                  title: '这是一个测试标题，我身体很健康',
-                  content: '我健康的很健康的很呢我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦',
-                  comment_counts: 10,
-                  isSupport: true,
-              },
-              {
-                  post_id: '2',
-                  user_id: '2',
-                  user_head_img: 'http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-01.png',
-                  user_name: 'Hzzone',
-                  time: '2018/3/25 下午8:10:10',
-                  title: '这是一个测试标题，我身体很健康',
-                  content: '我健康的很健康的很呢我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦',
-                  comment_counts: 10,
-                  isSupport: false,
-              }
-          ]
-      })
+      var that = this
       this.refresher = new $wuxRefresher({
           onPulling() {
               console.log('onPulling')
@@ -49,24 +26,27 @@ Page({
               console.log('onRefresh')
               // 刷新时调用
               setTimeout(() => {
-                  const items = this.scope.data.posts
-                  items.unshift({
-                      post_id: '3',
-                      user_id: '2',
-                      user_head_img: 'http://tuchuang-1252747889.cosgz.myqcloud.com/2018-03-23-01.png',
-                      user_name: 'Hzzone',
-                      time: '2018/3/25 下午8:10:10',
-                      title: '这是一个测试标题，我身体很健康',
-                      content: '我健康的很健康的很呢我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦我擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦擦',
-                      comment_counts: 10,
-                      isSupport: true,
-                  })
+                
+                  wx.request({
+                      url: 'http://127.0.0.1:8080/all_posts',
+                      method: 'get',
+                      header: {
+                          'content-type': 'application/x-www-form-urlencoded' // 默认值
+                      },
+                      success: res => {
+                          console.log(res.data)
+                          var posts = res.data
+                          for (var index in posts) {
+                              posts[index].postTime = new Date(posts[index].postTime).toLocaleString()
 
-                  this.scope.setData({
-                      posts: items,
+                          }
+                          that.setData({
+                              posts: res.data,
+                          })
+                          this.events.emit(`scroll.refreshComplete`)
+                      }
                   })
-
-                  this.events.emit(`scroll.refreshComplete`)
+                  
               }, 1000)
           }
       })
@@ -83,7 +63,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+      wx.request({
+          url: 'http://127.0.0.1:8080/all_posts',
+          method: 'get',
+          header: {
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          success: res => {
+              console.log(res.data)
+              var posts = res.data
+              for (var index in posts) {
+                  posts[index].postTime = new Date(posts[index].postTime).toLocaleString()
+
+              }
+              this.setData({
+                  posts: res.data,
+              })
+          }
+      })
   },
 
   /**
@@ -127,24 +124,48 @@ Page({
   change_color: function (e) {
       var $index = e.currentTarget.dataset.index
       console.log($index)
-      this.data.posts[$indnewex]["isSupport"] = !this.data.posts[$index]["isSupport"]
+      var support = this.data.posts[$index].support
+      this.data.posts[$index].support = !support
       this.setData({
           posts: this.data.posts,
       })
-  },
-  
-  /**
-   * 发送服务器取消点赞
-   */
-  cancel_support: function (e) {
-      console.log("取消点赞")
-  },
-
-  /**
-   * 发送服务器增加
-   */
-  support: function (e) {
-      console.log("增加点赞")
+      /**
+       * 服务器取消点赞
+       */
+      if(support) {
+          wx.request({
+              url: 'http://127.0.0.1:8080/delete_support',
+              data: {
+                  supportid: this.data.posts[$index].postId,
+                  openid: this.data.posts[$index].openId,
+              },
+              method: 'post',
+              header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success: res => {
+                  console.log(res.data)
+              }
+          })
+      } else {
+          /**
+           * 服务器点赞
+           */
+          wx.request({
+              url: 'http://127.0.0.1:8080/add_support',
+              data: {
+                  supportid: this.data.posts[$index].postId,
+                  openid: this.data.posts[$index].openId,
+              },
+              method: 'post',
+              header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success: res => {
+                  console.log(res.data)
+              }
+          })
+      }
   },
     touchstart(e) {
         this.refresher.touchstart(e)
@@ -155,5 +176,16 @@ Page({
     touchend(e) {
         this.refresher.touchend(e)
     },
-
+    naviToDetail: function(e) {
+        var $index = e.currentTarget.dataset.index
+        console.log($index)
+        wx.navigateTo({
+            url: '/pages/post_detail/post_detail?post=' + JSON.stringify(this.data.posts[$index]),
+        })
+    },
+    addNewPost: function() {
+        wx.navigateTo({
+            url: '/pages/add_post/add_post?openid=' + app.globalData.userInfo.openId,
+        })
+    }
 })

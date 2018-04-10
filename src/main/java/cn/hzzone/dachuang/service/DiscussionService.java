@@ -15,7 +15,7 @@ public interface DiscussionService {
 
     public int insertSupport(Support support);
 
-    public List<CommentDetail> findAllCommentsByPostID(String postid);
+    public List<CommentDetail> findAllCommentsByPostID(String postid, String openid);
 
     public CommentDetail insertNewComments(Comment comment);
 }

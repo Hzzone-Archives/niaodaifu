@@ -34,9 +34,12 @@ public class DiscussionServiceImpl implements DiscussionService {
             Support support = new Support();
             support.setOpenId(user.getOpenId());
             support.setSupportId(post.getPostId());
-            List supports = supportMapper.selectByAll(support);
-            Boolean isSupport = supports.isEmpty();
-            postDetails.add(new PostDetail(post, user.getUserImg(), user.getUserName(), isSupport));
+            Support supports = supportMapper.selectByAll(support);
+            Boolean isSupport = !(supports==null);
+            CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
+            List<Comment> comments = commentMapper.selectByPostID(post.getPostId());
+            Integer integer = comments.size();
+            postDetails.add(new PostDetail(post, user.getUserImg(), user.getUserName(), isSupport, integer));
         }
         sqlSession.close();
         return postDetails;
@@ -47,10 +50,14 @@ public class DiscussionServiceImpl implements DiscussionService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
+        List<Comment> comments = commentMapper.selectByPostID(post.getPostId());
         postMapper.insert(post);
         User user = userMapper.selectByPrimaryKey(post.getOpenId());
+        Integer integer = comments.size();
 
-        return new PostDetail(post, user.getUserImg(), user.getUserName(), false);
+        sqlSession.close();
+        return new PostDetail(post, user.getUserImg(), user.getUserName(), false, integer);
     }
 
     @Override
@@ -60,6 +67,7 @@ public class DiscussionServiceImpl implements DiscussionService {
         SupportMapper supportMapper = sqlSession.getMapper(SupportMapper.class);
         int d = supportMapper.deleteByPrimaryKey(support);
 
+        sqlSession.close();
         return d;
     }
 
@@ -69,11 +77,12 @@ public class DiscussionServiceImpl implements DiscussionService {
         SupportMapper supportMapper = sqlSession.getMapper(SupportMapper.class);
         int d = supportMapper.insert(support);
 
+        sqlSession.close();
         return d;
     }
 
     @Override
-    public List<CommentDetail> findAllCommentsByPostID(String postid) {
+    public List<CommentDetail> findAllCommentsByPostID(String postid, String openid) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         SupportMapper supportMapper = sqlSession.getMapper(SupportMapper.class);
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
@@ -81,14 +90,17 @@ public class DiscussionServiceImpl implements DiscussionService {
         List<Comment> comments = commentMapper.selectByPostID(postid);
         List<CommentDetail> commentDetails = new ArrayList<>();
         for(Comment comment: comments) {
-            User user = userMapper.selectByPrimaryKey(comment.getFromOpenid());
+            User from_user = userMapper.selectByPrimaryKey(comment.getFromOpenid());
+            User to_user = userMapper.selectByPrimaryKey(comment.getToOpenid());
             Support support = new Support();
             support.setSupportId(comment.getCommentId());
-            support.setOpenId(user.getOpenId());
-            List<Support> supports = supportMapper.selectByAll(support);
-            Boolean isSupport = supports.isEmpty();
-            commentDetails.add(new CommentDetail(comment, user.getUserImg(), user.getUserName(), isSupport));
+            support.setOpenId(openid);
+            Support supports = supportMapper.selectByAll(support);
+            Boolean isSupport = !(supports==null);
+            commentDetails.add(new CommentDetail(comment, from_user, to_user, isSupport));
         }
+
+        sqlSession.close();
         return commentDetails;
     }
 
@@ -97,8 +109,11 @@ public class DiscussionServiceImpl implements DiscussionService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         CommentMapper commentMapper = sqlSession.getMapper(CommentMapper.class);
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.selectByPrimaryKey(comment.getFromOpenid());
+        User from_user = userMapper.selectByPrimaryKey(comment.getFromOpenid());
+        User to_user = userMapper.selectByPrimaryKey(comment.getToOpenid());
         commentMapper.insert(comment);
-        return new CommentDetail(comment, user.getUserImg(), user.getUserName(), false);
+
+        sqlSession.close();
+        return new CommentDetail(comment, from_user, to_user, false);
     }
 }

@@ -17,5 +17,5 @@ public interface SupportMapper {
 
     int updateByPrimaryKey(Support record);
 
-    List<Support> selectByAll(Support support);
+    Support selectByAll(Support support);
 }

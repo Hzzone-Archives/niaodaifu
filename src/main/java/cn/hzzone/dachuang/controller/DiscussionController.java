@@ -50,7 +50,7 @@ public class DiscussionController {
         support.setOpenId(openid);
         support.setSupportId(supportid);
         int d = discussionService.deleteSupport(support);
-        return new Message<Integer>(d, 1, "删除点赞成功");
+        return new Message<>(d, 1, "删除点赞成功");
     }
 
 
@@ -61,12 +61,12 @@ public class DiscussionController {
         support.setOpenId(openid);
         support.setSupportId(supportid);
         int d = discussionService.insertSupport(support);
-        return new Message<Integer>(d, 1, "插入点赞成功");
+        return new Message<>(d, 1, "插入点赞成功");
     }
 
     @PostMapping("/all_comments")
-    public List<CommentDetail> findAllComments(@RequestParam("postid") String postid) {
-        List<CommentDetail> commentDetails = discussionService.findAllCommentsByPostID(postid);
+    public List<CommentDetail> findAllComments(@RequestParam("postid") String postid, @RequestParam("openid") String openid) {
+        List<CommentDetail> commentDetails = discussionService.findAllCommentsByPostID(postid, openid);
         return commentDetails;
     }
 
