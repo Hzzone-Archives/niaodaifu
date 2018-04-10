@@ -1,2 +1,6 @@
 <!--pages/add_post/add_post.wxml-->
-<text>pages/add_post/add_post.wxml</text>
+<view class='comment_area container'>
+    <input class='title_input' placeholder='标题' value='{{title}}' bindinput='bindTitleInput'></input>
+    <textarea placeholder='内容' class='comment_input' bindinput="bindContentInput" value='{{content}}'></textarea>
+    <view class='comment_button' bindtap='add_post'>发布</view>
+</view>

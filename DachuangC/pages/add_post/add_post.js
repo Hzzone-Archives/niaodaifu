@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      title: "",
+      content: "",
+      openid: "",
   },
 
   /**
@@ -13,6 +15,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+        openid: options.openid
+    })
   },
 
   /**
@@ -62,5 +67,56 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  bindTitleInput(e) {
+      this.setData({
+          title: e.detail.value
+      })
+  },
+
+  bindContentInput(e) {
+      this.setData({
+          content: e.detail.value
+      })
+  },
+
+  add_post() {
+      var title = this.data.title
+      var content = this.data.content
+      if(title==''||content==''){
+          wx.showModal({
+              content: '标题或内容不能为空',
+              showCancel: false,
+              success: function (res) {
+                  if (res.confirm) {
+                      console.log('用户点击确定')
+                  }
+              }
+          });
+      } else {
+          wx.request({
+              url: 'http://127.0.0.1:8080/add_post',
+              data: {
+                  content: content,
+                  title: title,
+                  openid: this.data.openid,
+              },
+              method: 'post',
+              header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              success: res => {
+                  console.log(res.data)
+                  wx.showToast({
+                      title: '发布成功',
+                  })
+                  wx.navigateBack()
+              }
+          })
+      }
+      
   }
+
+  
 })

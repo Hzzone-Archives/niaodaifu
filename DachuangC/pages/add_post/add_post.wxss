@@ -1,1 +1,28 @@
 /* pages/add_post/add_post.wxss */
+
+.comment_area {
+    margin: 10rpx;
+    border: 1px solid #eee;
+
+}
+
+.comment_input {
+    height: 400rpx;
+    width: 700rpx;
+    margin: 7rpx;
+    border: 1px solid #eee;
+    font-size: 30rpx;
+}
+
+.comment_button {
+    width: 200rpx;
+    text-align: center;
+}
+
+.title_input {
+    width: 700rpx;
+    margin: 10rpx;
+    border: 1px solid #eee;
+    font-size: 40rpx;
+}
+
