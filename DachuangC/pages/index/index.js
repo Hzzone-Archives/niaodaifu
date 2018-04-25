@@ -51,5 +51,8 @@ Page({
       wx.showToast({
           title: '待开发',
       })
+      wx.navigateTo({
+          url: '/pages/logs/logs',
+      })
   }
 })

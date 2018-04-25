@@ -12,7 +12,6 @@
 </view>
 
 <view wx:if='{{post_item_display}}'>
-    <button bindtap='test'>hhhh</button>
     <view class='record_item flex_view' wx:for='{{records}}' wx:key='{{records_id}}'>
         <view class='record_info'>
             <text class='record_type'>{{item.record_type}}</text>

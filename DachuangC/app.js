@@ -62,7 +62,14 @@ App({
           console.log(res.code)
       }
     })
-    
+    wx.openBluetoothAdapter({
+        success: function (res) {
+            console.log(res)
+        },
+        fail: function (res) {
+            console.log(res)
+        }
+    })
   },
   globalData: {
     userInfo: null,
