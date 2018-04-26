@@ -1,7 +1,8 @@
 ### 技术背景
 * 基于微信小程序开发
-* Spring boot开发框架
+* Spring Boot开发框架
 * Mybatis持久层框架
+* Postgresql
 
 ### 完成的功能
 * 在线商城（收货、付款、地址、订单、搜索…）
