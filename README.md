@@ -12,7 +12,7 @@
 
 
 ### demo
-![demo/demo.gif]()
+![](demo/demo.gif)
 
 * doLogin
 打开小程序时注册用户，已存在：返回用户个人信息，不存在插入数据库
